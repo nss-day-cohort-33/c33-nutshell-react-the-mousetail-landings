@@ -1,15 +1,15 @@
 {
-  "Users": [
+  "users": [
       { "id": 1,
         "username": "Steve",
         "email": "me@me.com" }
     ],
-  "Messages": [
+  "messages": [
       { "id": 1,
         "userId": 1,
         "message": "What's up?" }
     ],
-  "News": [
+  "news": [
     {
       "id": 1,
       "userId": 2,
@@ -18,13 +18,13 @@
       "synopsis": "Check out this recent discovery about workholes"
     }
   ],
-  "Friends": [
+  "friends": [
       { "connectionId": 1,
         "userId": 1,
         "otherFriendId": 3 }
     ],
 
-  "Tasks": [
+  "tasks": [
       { "id": 1,
         "userId": 3,
         "task": "Take out garbage" }
