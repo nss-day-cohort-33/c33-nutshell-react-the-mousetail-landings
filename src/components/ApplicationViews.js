@@ -62,8 +62,7 @@ componentDidMount() {
 
         <Route
           path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+            return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
           }}
         />
 

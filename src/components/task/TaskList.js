@@ -1,0 +1,26 @@
+import React, { Component } from "react"
+import "./Task.css"
+import AnimalCard from "./AnimalCard"
+
+export default class TaskList extends Component {
+    render () {
+        return (
+            <React.Fragment>
+                <div className="taskButton">
+                    <button type="button"
+                            onClick={()=> this.props.history.push("/animals/new")}
+                            className="btn btn-success">
+                        Admit Animal
+                    </button>
+                </div>
+                <section className="animals">
+                {
+                    this.props.animals.map(animal =>
+                        <AnimalCard key={animal.id} animal={animal} {...this.props} />
+                    )
+                }
+                </section>
+            </React.Fragment>
+        )
+    }
+}
