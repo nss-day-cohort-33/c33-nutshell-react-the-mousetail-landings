@@ -9,13 +9,23 @@
         "userId": 1,
         "message": "What's up?" }
     ],
-  "news": [
+  "articles": [
     {
       "id": 1,
       "userId": 2,
       "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
       "title": "Wormholes Allow Information to Escape Black Holes",
       "synopsis": "Check out this recent discovery about workholes"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Jordan's Birthday Dinner",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
     }
   ],
   "friends": [
