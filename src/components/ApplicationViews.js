@@ -3,6 +3,15 @@ import React, { Component } from "react";
 
 export default class ApplicationViews extends Component {
 
+state = {
+  users: [],
+  messages: [],
+  articles: [],
+  events: [],
+  friends: [],
+  tasks: []
+}
+
   render() {
     return (
       <React.Fragment>
