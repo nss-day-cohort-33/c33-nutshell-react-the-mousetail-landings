@@ -1,9 +1,11 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 import ArticleManager from "../modules/ArticleManager"
 import EventManager from "../modules/EventManager"
 import MessageManager from "../modules/MessageManager"
 import TaskManager from "../modules/TaskManager"
+import Login from "./authentication/Login"
 
 export default class ApplicationViews extends Component {
 
