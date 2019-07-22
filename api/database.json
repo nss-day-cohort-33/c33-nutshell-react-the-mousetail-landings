@@ -9,7 +9,11 @@
         "userId": 1,
         "message": "What's up?" }
     ],
+<<<<<<< HEAD
   "news": [
+=======
+  "articles": [
+>>>>>>> 4b97a409423217fc05d459481c2673f3b753d457
     {
       "id": 1,
       "userId": 2,
@@ -18,6 +22,19 @@
       "synopsis": "Check out this recent discovery about workholes"
     }
   ],
+<<<<<<< HEAD
+=======
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Jordan's Birthday Dinner",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
+    }
+  ],
+>>>>>>> 4b97a409423217fc05d459481c2673f3b753d457
   "friends": [
       { "connectionId": 1,
         "userId": 1,
