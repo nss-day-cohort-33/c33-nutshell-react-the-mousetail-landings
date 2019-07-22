@@ -6,6 +6,12 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+        <Route
+          path="/events" render={props => {
+            return null
+            // Remove null and return the component which will show the user's events
+          }}
+        />
 
         <Route
           exact path="/" render={props => {
