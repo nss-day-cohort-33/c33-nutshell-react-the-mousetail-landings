@@ -1,25 +1,27 @@
 import React, { Component } from "react"
 import "./Task.css"
-import AnimalCard from "./AnimalCard"
 
 export default class TaskList extends Component {
     render () {
         return (
             <React.Fragment>
-                <div className="taskButton">
-                    <button type="button"
-                            onClick={()=> this.props.history.push("/animals/new")}
-                            className="btn btn-success">
-                        Admit Animal
-                    </button>
-                </div>
-                <section className="animals">
-                {
-                    this.props.animals.map(animal =>
-                        <AnimalCard key={animal.id} animal={animal} {...this.props} />
-                    )
-                }
-                </section>
+                <section className="tasks">
+            {
+                this.props.tasks.map(task =>
+                    <div key={task.id} className="card">
+                        <div className="card-body">
+                            <div className="card-title">
+                                {/* <img src={dog} className="icon--dog" /> */}
+                                <h5>{task.name}</h5>
+                                {/* <button
+                                    onClick={() => this.props.deleteAnimal(animal.id)}
+                                    className="card-link">Delete</button> */}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            </section>
             </React.Fragment>
         )
     }

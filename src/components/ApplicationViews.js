@@ -1,10 +1,11 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import ArticleManager from "../modules/ArticleManager"
-import EventManager from "../modules/EventManager"
-import MessageManager from "../modules/MessageManager"
-import TaskManager from "../modules/TaskManager"
+// import ArticleManager from "../modules/ArticleManager"
+// import EventManager from "../modules/EventManager"
+// import MessageManager from "../modules/MessageManager"
+import TaskManager from "./modules/TaskManager"
+import TaskList from "./task/TaskList"
 import Login from "./authentication/Login"
 
 export default class ApplicationViews extends Component {
@@ -21,12 +22,12 @@ export default class ApplicationViews extends Component {
 componentDidMount() {
   const newState = {}
 
-  ArticleManager.getAll("articles")
-      .then(articles => newState.articles = articles)
-  EventManager.getAll("events")
-      .then(events => newState.events = events)
-  MessageManager.getAll("messages")
-      .then(messages => newState.messages = messages)
+  // ArticleManager.getAll("articles")
+  //     .then(articles => newState.articles = articles)
+  // EventManager.getAll("events")
+  //     .then(events => newState.events = events)
+  // MessageManager.getAll("messages")
+  //     .then(messages => newState.messages = messages)
   TaskManager.getAll("tasks")
       .then(tasks => newState.tasks = tasks)
       .then(() => this.setState(newState))
