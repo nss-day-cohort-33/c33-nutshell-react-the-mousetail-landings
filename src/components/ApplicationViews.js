@@ -1,17 +1,34 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import ArticleManager from "../modules/ArticleManager"
+import EventManager from "../modules/EventManager"
+import MessageManager from "../modules/MessageManager"
+import TaskManager from "../modules/TaskManager"
 
 export default class ApplicationViews extends Component {
 
-state = {
-  users: [],
-  messages: [],
-  articles: [],
-  events: [],
-  friends: [],
-  tasks: []
+  state = {
+    users: [],
+    messages: [],
+    articles: [],
+    events: [],
+    friends: [],
+    tasks: []
 }
 
+componentDidMount() {
+  const newState = {}
+
+  ArticleManager.getAll("articles")
+      .then(articles => newState.articles = articles)
+  EventManager.getAll("events")
+      .then(events => newState.events = events)
+  MessageManager.getAll("messages")
+      .then(messages => newState.messages = messages)
+  TaskManager.getAll("tasks")
+      .then(tasks => newState.tasks = tasks)
+      .then(() => this.setState(newState))
+}
   render() {
     return (
       <React.Fragment>
@@ -49,7 +66,7 @@ state = {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-        
+
       </React.Fragment>
     );
   }
