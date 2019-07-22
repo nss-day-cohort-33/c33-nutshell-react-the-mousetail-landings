@@ -1,15 +1,15 @@
 {
-  "Users": [
+  "users": [
       { "id": 1,
         "username": "Steve",
         "email": "me@me.com" }
     ],
-  "Messages": [
+  "messages": [
       { "id": 1,
         "userId": 1,
         "message": "What's up?" }
     ],
-  "News": [
+  "articles": [
     {
       "id": 1,
       "userId": 2,
@@ -18,13 +18,23 @@
       "synopsis": "Check out this recent discovery about workholes"
     }
   ],
-  "Friends": [
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Jordan's Birthday Dinner",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
+    }
+  ],
+  "friends": [
       { "connectionId": 1,
         "userId": 1,
         "otherFriendId": 3 }
     ],
 
-  "Tasks": [
+  "tasks": [
       { "id": 1,
         "userId": 3,
         "task": "Take out garbage" }
