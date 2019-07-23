@@ -13,6 +13,7 @@ export default class TaskList extends Component {
                             <div className="card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}
                                 <h5>{task.name}</h5>
+                                <h5>{task.completionDate}</h5>
                                 {/* <button
                                     onClick={() => this.props.deleteAnimal(animal.id)}
                                     className="card-link">Delete</button> */}

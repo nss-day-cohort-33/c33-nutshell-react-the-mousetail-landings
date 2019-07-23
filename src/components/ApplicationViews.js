@@ -32,6 +32,18 @@ componentDidMount() {
       .then(tasks => newState.tasks = tasks)
       .then(() => this.setState(newState))
 }
+
+isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
+addTask = (task) => {
+  return TaskManager.post("tasks", task)
+      .then(() => TaskManager.getAll("tasks"))
+      .then(tasks =>
+          this.setState({
+              tasks: tasks
+      })
+  );
+}
   render() {
     return (
       <React.Fragment>
@@ -65,9 +77,15 @@ componentDidMount() {
 
         <Route
           path="/tasks" render={props => {
-            return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
+            if(this.isAuthenticated()){
+              return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
+            } else {
+              return <Redirect to="/login" />
+              }
           }}
         />
+
+        <Route path="/login" component={Login} />
 
       </React.Fragment>
     );
