@@ -2,7 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 // import ArticleManager from "../modules/ArticleManager"
-// import EventManager from "../modules/EventManager"
+import EventManager from "./modules/EventManager"
 // import MessageManager from "../modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import TaskList from "./task/TaskList"
@@ -26,8 +26,8 @@ componentDidMount() {
 
   // ArticleManager.getAll("articles")
   //     .then(articles => newState.articles = articles)
-  // EventManager.getAll("events")
-  //     .then(events => newState.events = events)
+  EventManager.getAll("events")
+       .then(events => newState.events = events)
   // MessageManager.getAll("messages")
   //     .then(messages => newState.messages = messages)
   TaskManager.getAll("tasks")
