@@ -6,6 +6,8 @@ import { withRouter } from "react-router";
 // import MessageManager from "../modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import TaskList from "./task/TaskList"
+import EventList from "./event/EventList"
+import EventForm from "./event/EventForm"
 import Login from "./authentication/Login"
 
 export default class ApplicationViews extends Component {
@@ -35,6 +37,8 @@ componentDidMount() {
 
 isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
+//need to add the edit (get and then put) and delete (delete) fetch calls for events
+
 addTask = (task) => {
   return TaskManager.post("tasks", task)
       .then(() => TaskManager.getAll("tasks"))
@@ -49,10 +53,12 @@ addTask = (task) => {
       <React.Fragment>
         <Route
           path="/events" render={props => {
-            return null
-            // Remove null and return the component which will show the user's events
+            if(this.isAuthenticated()) {
+            return <EventList {...props} deleteEvent={this.deleteEvent} events={this.state.events} addEvent={this.addEvent} />
+          } else {
+          return <Redirect to="/login" /> }
           }}
-        />
+          />
 
         <Route
           exact path="/" render={props => {
