@@ -54,11 +54,16 @@ addTask = (task) => {
         <Route
           path="/events" render={props => {
             if(this.isAuthenticated()) {
-            return <EventList {...props} deleteEvent={this.deleteEvent} events={this.state.events} addEvent={this.addEvent} />
+            return <EventList {...props} deleteEvent={this.deleteEvent} events={this.state.events} />
           } else {
           return <Redirect to="/login" /> }
           }}
           />
+          <Route path="/events/new" render={(props) => {
+              return <EventForm
+                {...props}
+                addEvent={this.addEvent} />
+            }} />
 
         <Route
           exact path="/" render={props => {
