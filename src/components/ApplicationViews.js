@@ -1,12 +1,21 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import NavBar from "./nav/NavBar";
+
 // import ArticleManager from "../modules/ArticleManager"
 // import EventManager from "../modules/EventManager"
 // import MessageManager from "../modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
+import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
+import ArticleList from "./article/ArticleList"
+import EventList from "./event/EventList"
+import MessageList from "./message/MessageList"
 import Login from "./authentication/Login"
+import Welcome from "./authentication/Welcome"
+import Register from "./authentication/Register"
+
 
 export default class ApplicationViews extends Component {
 
@@ -44,9 +53,39 @@ addTask = (task) => {
       })
   );
 }
+
+
+
+getUser = (userName) => {
+  return LoginManager.get("user", userName)
+
+}
+
+
+
   render() {
     return (
       <React.Fragment>
+
+        <Route exact path="/" component={Welcome}/>
+
+        <Route exact path="/home" render={props => {
+            return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
+              (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
+              (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
+              (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
+          }}/>
+
+        <Route
+          exact path="/register" render={props => {
+            return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
+          }}
+        />
+
+
+
+        <Route exact path="/login" component={Login} />
+
         <Route
           path="/events" render={props => {
             return null
@@ -54,12 +93,6 @@ addTask = (task) => {
           }}
         />
 
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
 
         <Route
           path="/friends" render={props => {
@@ -76,16 +109,14 @@ addTask = (task) => {
         />
 
         <Route
-          path="/tasks" render={props => {
-            if(this.isAuthenticated()){
+          path="/tasks" render={(props) => {
+            if (this.isAuthenticated()) {
               return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
             } else {
-              return <Redirect to="/login" />
-              }
-          }}
-        />
+                return <Redirect to="/" />
+               }
+          }} />
 
-        <Route path="/login" component={Login} />
 
       </React.Fragment>
     );
