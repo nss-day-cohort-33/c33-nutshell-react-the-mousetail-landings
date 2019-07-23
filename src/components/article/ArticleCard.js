@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 export default class ArticleCard extends Component {
   render() {
     return (
-      <div key={this.props.article.id} className="card">
+      <div key={this.props.articles} className="card">
         <div className="card-body">
           <div className="card-title">
             {/* <img src={dog} className="icon--dog" alt="dog"/> */}
-            <h5>{this.props.article.name}</h5>
-            <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
+            <h5>{this.props.articles.name}</h5>
+            <Link className="nav-link" to={`/articles/${this.props.articles}`}>
               Details
             </Link>
             <button

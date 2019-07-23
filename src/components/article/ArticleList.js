@@ -10,7 +10,7 @@ export default class ArticleList extends Component {
                     <button type="button"
                             onClick={()=> this.props.history.push("/articles/new")}
                             className="btn btn-success">
-                        Admit Animal
+                        Submit Article
                     </button>
                 </div>
                 <section className="articles">

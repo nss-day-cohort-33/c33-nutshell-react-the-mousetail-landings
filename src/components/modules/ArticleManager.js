@@ -1,4 +1,4 @@
-import APIManager from "./APIManager.js"
+import APIManager from "./APImanager.js"
 
 export default {
     get(resource, id) {
