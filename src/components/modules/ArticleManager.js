@@ -2,24 +2,24 @@ import APIManager from "./APImanager.js"
 
 export default {
     get(resource, id) {
-          return APIManager.get(resource, id)
+          return APImanager.get(resource, id)
     },
 
     getAll(resource) {
-          return APIManager.all(resource)
+          return APImanager.all(resource)
     },
 
     post(resource, resourceObj) {
-          return APIManager.post(resource, resourceObj)
+          return APImanager.post(resource, resourceObj)
     },
 
     removeAndList(resource, id) {
-          return APIManager.delete(resource, id)
+          return APImanager.delete(resource, id)
           .then( () => this.getAll(resource))
     },
 
     put(resource, resourceObjId) {
-      return APIManager.put(resource, resourceObjId)
+      return APImanager.put(resource, resourceObjId)
     }
 
 

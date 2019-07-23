@@ -33,10 +33,11 @@
         "userId": 1,
         "otherFriendId": 3 }
     ],
-
   "tasks": [
       { "id": 1,
         "userId": 3,
-        "task": "Take out garbage" }
+        "name": "Take out garbage",
+        "completionDate": "2019-05-07",
+        "completed": false }
     ]
 }

@@ -34,7 +34,7 @@ export default class ArticleEditForm extends Component {
     this.props.updateArticle(editedArticle)
     .then(() => this.props.history.push("/articles"))
     }
-  }
+  
 
     componentDidMount() {
       ArticleManager.get(this.props.match.params.articleId)
