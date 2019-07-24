@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import "./article.css"
-import ArticleCard from "./articleCard"
+import ArticleCard from "./ArticleCard"
 
 export default class ArticleList extends Component {
     render () {

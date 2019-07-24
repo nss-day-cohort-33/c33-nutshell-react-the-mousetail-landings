@@ -14,7 +14,7 @@ export default class Article extends Component {
               {/* <img src={dog} className="icon--dog" alt="doggo" /> */}
               {this.props.article.name}
             </h4>
-            <h6 className="card-title">{this.props.article.breed}</h6>
+            <h6 className="card-title">{this.props.article.title}</h6>
             <button
             //   onClick={() => {
             //     this.setState({ saveDisabled: true }, () =>

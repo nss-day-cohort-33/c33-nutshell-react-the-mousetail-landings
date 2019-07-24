@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 export default class ArticleCard extends Component {
   render() {
     return (
-      <div key={this.props.articles} className="card">
+      <div key={this.props.article.id} className="card">
         <div className="card-body">
           <div className="card-title">
             {/* <img src={dog} className="icon--dog" alt="dog"/> */}
-            <h5>{this.props.articles.name}</h5>
-            <Link className="nav-link" to={`/articles/${this.props.articles}`}>
+            <h5>{this.props.article.title}</h5>
+            <h5>{this.props.article.url}</h5>
+            <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
               Details
             </Link>
             <button
@@ -18,18 +19,18 @@ export default class ArticleCard extends Component {
               className="btn btn-success"
               onClick={() => {
                 this.props.history.push(
-                  `/animals/${this.props.article.id}/edit`
+                  `/articles/${this.props.article.id}/edit`
                 );
               }}
             >
-              Edit
+              EDIT
             </button>
             <a
               href="#"
               onClick={() => this.props.deleteArticle(this.props.article.id)}
               className="card-link"
             >
-              Discharge
+              DELETE
             </a>
           </div>
         </div>

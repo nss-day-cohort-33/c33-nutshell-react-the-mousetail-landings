@@ -1,21 +1,39 @@
 {
   "users": [
-      { "id": 1,
-        "username": "Steve",
-        "email": "me@me.com" }
-    ],
+    {
+      "id": 1,
+      "username": "Steve",
+      "email": "me@me.com"
+    }
+  ],
   "messages": [
-      { "id": 1,
-        "userId": 1,
-        "message": "What's up?" }
-    ],
+    {
+      "id": 1,
+      "userId": 1,
+      "message": "What's up?"
+    }
+  ],
   "articles": [
     {
       "id": 1,
-      "userId": 2,
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-      "title": "Wormholes Allow Information to Escape Black Holes",
-      "synopsis": "Check out this recent discovery about workholes"
+      "title": "Wormholes Allow Information to Escape Black Holes in time ttt",
+      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/ when is this tttt",
+      "synopsis": "Check out this recent discovery about wormholesttt",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Wormholes Allow Information to Escape Black Holes in time ttt",
+      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/ when is this tttt",
+      "synopsis": "Check out this recent discovery about wormholesttt",
+      "userId": 1
+    },
+    {
+      "title": "This should be a new arty new way",
+      "url": "Thus url is niuce",
+      "synopsis": "about nothing and everything at once",
+      "userId": null,
+      "id": 3
     }
   ],
   "events": [
@@ -29,15 +47,19 @@
     }
   ],
   "friends": [
-      { "connectionId": 1,
-        "userId": 1,
-        "otherFriendId": 3 }
-    ],
+    {
+      "connectionId": 1,
+      "userId": 1,
+      "otherFriendId": 3
+    }
+  ],
   "tasks": [
-      { "id": 1,
-        "userId": 3,
-        "name": "Take out garbage",
-        "completionDate": "2019-05-07",
-        "completed": false }
-    ]
+    {
+      "id": 1,
+      "userId": 3,
+      "name": "Take out garbage",
+      "completionDate": "2019-05-07",
+      "completed": false
+    }
+  ]
 }
