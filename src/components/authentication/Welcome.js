@@ -8,26 +8,10 @@ import {withRouter} from 'react-router-dom'
         return (
             <form>
                 <h1 className="h3 mb-3 font-weight-normal">Welcome to Nutshell Please Register or Login</h1>
-                {/* <label htmlFor="inputUsername">
-                    Username
-                 </label>
-                <input onChange={this.handleFieldChange} type="username"
-                    //    id="username"
-                       placeholder="Username"
-                       required="" autoFocus="" />
-                <label htmlFor="inputPassword">
-                    Password
-                </label>
-                <input onChange={this.handleFieldChange} type="password"
-                    //    id="password"
-                       placeholder="Password"
-                       required="" /> */}
                 <button><Link to="/register">Register</Link></button>
                 <button><Link to="/login">Login</Link></button>
             </form>
         )
     }
 }
-
-
 export default withRouter(Welcome)

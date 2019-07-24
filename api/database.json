@@ -3,55 +3,37 @@
     {
       "id": 1,
       "username": "Steve",
-      "password": "123"
-    },
-    {
-      "username": "jeff",
-      "password": "jeff",
-      "id": 2
-    },
-    {
-      "username": "misty",
-      "password": "misty",
-      "id": 3
-    },
-    {
-      "username": "jake",
-      "password": "jake",
-      "id": 4
-    },
-    {
-      "username": "momo",
-      "password": "momo",
-      "id": 5
-    },
-    {
-      "username": "momosif",
-      "password": "momo",
-      "id": 6
-    },
-    {
-      "username": "melanie",
-      "password": "melanie",
-      "id": 7
+      "email": "me@me.com"
     }
   ],
   "messages": [
     {
-      "id": 1,
-      "userId": 1,
-      "message": "What's up?"
-    }
-  ],
-  "articles": [
+      "message": "Hi there",
+      "userId": null,
+      "id": 1
+    },
     {
-      "id": 1,
-      "userId": 2,
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-      "title": "Wormholes Allow Information to Escape Black Holes",
-      "synopsis": "Check out this recent discovery about workholes"
+      "message": "Hello, How are you today!",
+      "userId": null,
+      "id": 2
+    },
+    {
+      "message": "I am enjoying the NSS Journey!",
+      "userId": null,
+      "id": 3
+    },
+    {
+      "message": "Please help me, somebody, anybody! Yikes!!",
+      "userId": null,
+      "id": 4
+    },
+    {
+      "message": "What in the Fried Chicken is this?",
+      "userId": null,
+      "id": 5
     }
   ],
+  "articles": [],
   "events": [
     {
       "id": 1,
