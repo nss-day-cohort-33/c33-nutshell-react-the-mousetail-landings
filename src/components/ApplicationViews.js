@@ -1,14 +1,26 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import NavBar from "./nav/NavBar";
+
 // import ArticleManager from "../modules/ArticleManager"
 import EventManager from "./modules/EventManager"
 // import MessageManager from "../modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
+import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
+<<<<<<< HEAD
 import EventList from "./event/EventList"
 import EventForm from "./event/EventForm"
+=======
+import ArticleList from "./article/ArticleList"
+import EventList from "./event/EventList"
+import MessageList from "./message/MessageList"
+>>>>>>> c85dbe919ff17101c275bb4b5168a604e54f8db1
 import Login from "./authentication/Login"
+import Welcome from "./authentication/Welcome"
+import Register from "./authentication/Register"
+
 
 export default class ApplicationViews extends Component {
 
@@ -48,15 +60,40 @@ addTask = (task) => {
       })
   );
 }
+
+
+
+getUser = (userName) => {
+  return LoginManager.get("user", userName)
+
+}
+
+
+
   render() {
     return (
       <React.Fragment>
+
+        <Route exact path="/" component={Welcome}/>
+
+        <Route exact path="/home" render={props => {
+            return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
+              // (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
+              // (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
+              // (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
+          }}/>
+
         <Route
+<<<<<<< HEAD
           path="/events" render={props => {
             if(this.isAuthenticated()) {
             return <EventList {...props} deleteEvent={this.deleteEvent} events={this.state.events} />
           } else {
           return <Redirect to="/login" /> }
+=======
+          exact path="/register" render={props => {
+            return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
+>>>>>>> c85dbe919ff17101c275bb4b5168a604e54f8db1
           }}
           />
           <Route path="/events/new" render={(props) => {
@@ -65,12 +102,17 @@ addTask = (task) => {
                 addEvent={this.addEvent} />
             }} />
 
+
+
+        <Route exact path="/login" component={Login} />
+
         <Route
-          exact path="/" render={props => {
+          path="/events" render={props => {
             return null
-            // Remove null and return the component which will show news articles
+            // Remove null and return the component which will show the user's events
           }}
         />
+
 
         <Route
           path="/friends" render={props => {
@@ -87,16 +129,14 @@ addTask = (task) => {
         />
 
         <Route
-          path="/tasks" render={props => {
-            if(this.isAuthenticated()){
+          path="/tasks" render={(props) => {
+            if (this.isAuthenticated()) {
               return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
             } else {
-              return <Redirect to="/login" />
-              }
-          }}
-        />
+                return <Redirect to="/" />
+               }
+          }} />
 
-        <Route path="/login" component={Login} />
 
       </React.Fragment>
     );
