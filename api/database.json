@@ -65,6 +65,14 @@
       "location": "Our House",
       "date": "2019-08-07",
       "time": "21:00"
+    },
+    {
+      "userId": null,
+      "title": "Purple",
+      "location": "Gymnastics Gym",
+      "date": "0005-03-04",
+      "time": "11:00am",
+      "id": 2
     }
   ],
   "friends": [

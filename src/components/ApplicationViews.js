@@ -8,7 +8,6 @@ import EventManager from "./modules/EventManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
-// import EventList from "./event/EventList"
 import EventForm from "./event/EventForm"
 // import ArticleList from "./article/ArticleList"
 // import MessageList from "./message/MessageList"
@@ -42,7 +41,17 @@ componentDidMount() {
       .then(() => this.setState(newState))
 }
 
-isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+addEvent = (thing) => {
+  return TaskManager.post("events", thing)
+      .then(() => TaskManager.getAll("events"))
+      .then(eventData =>
+          this.setState({
+            events: eventData 
+      })
+  );
+}
+
+isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
 //need to add the edit (get and then put) and delete (delete) fetch calls for events
 
@@ -80,10 +89,6 @@ getUser = (userName) => {
             return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
           }}
           />
-
-        <Route
-          path="/events/all" render={props => {
-          }} />
             
         <Route path="/events" render={(props) => {
           if(this.isAuthenticated()) {

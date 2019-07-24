@@ -3,45 +3,33 @@ import "./Event.css"
 
 export default class EventForm extends Component {
     state = {
-        userId: parseInt(sessionStorage.getItem("userId")),
-        title: " ",
-        location: " ",
-        date: " ",
-        time: " "
+        userId: "",
+        title: "",
+        location: "",
+        date: "",
+        time: ""
       }
-    
-      // Update state whenever an input field is edited
+
       handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
-      };
-    
-      constructNewEvent = evt => {
-        evt.preventDefault();
-        if (this.state.title === "") {
-          window.alert("Please enter a title");
-        }
-        if (this.state.location === "") {
-            window.alert("Please enter a location");
-        }
-        if (this.state.date === "") {
-            window.alert("Please select a date");
-        }
-        if (this.state.time === "") {
-            window.alert("Please specify a time");
-        } else {
-          const event = {
+      }
+
+      constructNewEvent = inputEvent => {
+        inputEvent.preventDefault();
+          const newEvent = {
+            userId: parseInt(this.state.userId),
             title: this.state.title,
             location: this.state.location,
             date: this.state.date,
             time: this.state.time
           };
         this.props
-            .addEvent(event)
-            .then(() => this.props.history.push("/events"));
+            .addEvent(newEvent)
+            .then(() => this.props.history.push("/home"));
     }
-}
+
           
           render() {
               return (
@@ -63,22 +51,24 @@ export default class EventForm extends Component {
                     <label htmlFor="time-of-event">Time</label>
                     <input type="text" id="time" required onChange={this.handleFieldChange}/>
                 </div>
-                <button onClick={this.handleSubmit}>Save</button>
+                <button onClick={this.constructNewEvent}>Save</button>
             </form>
             <section className="events">
-            {
-                this.props.events.map(each =>
+                {this.props.events.map(each =>
                     <div key={each.userId} className="card">
                         <div className="card-body">
                             <div className="card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}
                                 <h2>{each.title}</h2>
-                                <h3>{each.location}</h3>
                                 <h4>{each.date}</h4>
                                 <h4>{each.time}</h4>
-                                {/* <button
-                                    onClick={() => this.props.deleteAnimal(animal.id)}
-                                    className="card-link">Delete</button> */}
+                                <h3>{each.location}</h3>
+                                <button
+                                    onClick={() => this.props.deleteEvent(each.id)}
+                                    className="card-link">Delete</button>
+                                    <button
+                                    onClick={() => this.props.editEvent(each.id)}
+                                    className="card-link">Edit</button>
                             </div>
                         </div>
                     </div>
