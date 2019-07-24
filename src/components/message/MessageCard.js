@@ -7,7 +7,9 @@ export default class MessageCard extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* button to edit message card */}
+        <div>
+        {this.props.message.message}
+        </div>
         <button
           type="button"
           className="btn btn-success"

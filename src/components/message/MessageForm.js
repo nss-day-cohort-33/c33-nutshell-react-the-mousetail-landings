@@ -6,7 +6,7 @@ export default class MessageForm extends Component {
   // Set initial state of how the new layout will look and store in database
   state = {
     // userName: "",
-    message: "",
+    messageName: "",
     userId: ""
   };
 
@@ -23,12 +23,12 @@ export default class MessageForm extends Component {
      */
   constructNewMessage = evt => {
     evt.preventDefault();
-    if (this.state.message === "") {
+    if (this.state.message === null) {
     window.alert("Please enter a message");
     } else {
     const message = {
     //  userName: sessionStorage.getItem("credentials"),
-      message: this.state.message,
+      message: this.state.messageName,
       // userName: this.state.userName,
       // Make sure the userId is saved to the database as a number since it is a foreign key.
       userId: parseInt(this.state.userId)

@@ -8,40 +8,12 @@
   ],
   "messages": [
     {
-      "id": 1,
-      "userId": 1,
-      "message": "What's up?"
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "message": "Hi"
-    },
-    {
-      "id": 3,
-      "userId": 3,
-      "message": "What?"
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "message": "Hello?"
-    },
-    {
-      "message": "",
+      "message": "Hi there",
       "userId": null,
-      "id": 5
+      "id": 1
     }
   ],
-  "articles": [
-    {
-      "id": 1,
-      "userId": 2,
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-      "title": "Wormholes Allow Information to Escape Black Holes",
-      "synopsis": "Check out this recent discovery about workholes"
-    }
-  ],
+  "articles": [],
   "events": [
     {
       "id": 1,
@@ -59,13 +31,5 @@
       "otherFriendId": 3
     }
   ],
-  "tasks": [
-    {
-      "id": 1,
-      "userId": 3,
-      "name": "Take out garbage",
-      "completionDate": "2019-05-07",
-      "completed": false
-    }
-  ]
+  "tasks": []
 }
