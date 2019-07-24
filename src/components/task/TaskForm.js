@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 // import "./Task.css";
 
+let userId = sessionStorage.getItem("userId")
+console.log(userId.id)
 export default class TaskForm extends Component {
   // Set initial state
   state = {
     taskName: "",
     completionDate: "",
     completed: false,
-    userId: ""
+    userId: parseInt(userId.id)
   };
 
   // Update state whenever an input field is edited
@@ -22,7 +24,6 @@ export default class TaskForm extends Component {
         invoking the function reference passed from parent component
      */
   constructNewTask = evt => {
-    let userId = sessionStorage.getItem("userId")
     evt.preventDefault();
     const task = {
         name: this.state.taskName,
@@ -30,7 +31,7 @@ export default class TaskForm extends Component {
         completed: false,
         // userId: parseInt(this.setState.sessionStorage.getItem("userId"))
         // Make sure the userId is saved to the database as a number since it is a foreign key.
-        userId: parseInt(this.setState.userId)
+        userId: this.state.userId
       };
 
       // Create the animal and redirect user to animal list
