@@ -24,7 +24,7 @@ export default class MessageCard extends Component {
           onClick={() => this.props.deleteMessage(this.props.message.id)}
           className="card-link"
         >
-          Delete Message
+          Delete
         </a>
       </React.Fragment>
     );

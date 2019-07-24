@@ -1,15 +1,21 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import MessageList from "./message/MessageList";
-import MessageForm from "./message/MessageForm";
-import MessageDetail from "./message/MessageDetail";
-import TaskList from "./message/MessageList";
-import ArticleManager from "./modules/ArticleManager";
-// import EventManager from "./modules/EventManager";
-import MessageManager from "./modules/MessageManager";
-import TaskManager from "./modules/TaskManager";
-import Login from "./authentication/Login";
+import NavBar from "./nav/NavBar";
+import ArticleManager from "./modules/ArticleManager"
+import EventManager from "./modules/EventManager"
+import MessageManager from "./modules/MessageManager"
+import TaskManager from "./modules/TaskManager"
+import LoginManager from "./modules/LoginManager"
+import TaskList from "./task/TaskList"
+import ArticleList from "./article/ArticleList"
+import EventList from "./event/EventList"
+import MessageList from "./message/MessageList"
+import MessageForm from "./message/MessageForm"
+import MessageDetail from "./message/MessageDetail"
+import Login from "./authentication/Login"
+import Welcome from "./authentication/Welcome"
+import Register from "./authentication/Register"
 
 class ApplicationViews extends Component {
   state = {
@@ -82,22 +88,32 @@ class ApplicationViews extends Component {
       });
   };
 
+
+
+getUser = (userName) => {
+  return LoginManager.get("user", userName)
+}
+
   render() {
     return (
       <React.Fragment>
+        <Route exact path="/" component={Welcome}/>
+        <Route exact path="/home" render={props => {
+            return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
+              (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
+              // (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
+              (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
+          }}/>
         <Route
-          path="/events"
-          render={props => {
-            return null;
-            // Remove null and return the component which will show the user's events
+          exact path="/register" render={props => {
+            return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
           }}
         />
+        <Route exact path="/login" component={Login} />
         <Route
-          exact
-          path="/"
-          render={props => {
-            return null;
-            // Remove null and return the component which will show news articles
+          path="/events" render={props => {
+            return null
+            // Remove null and return the component which will show the user's events
           }}
         />
         <Route
@@ -118,7 +134,7 @@ class ApplicationViews extends Component {
                   deleteMessage={this.deleteMessage}
                   messages={this.state.messages}
                 />
-              );
+              )
             } else {
               return <Redirect to="/login" />;
             }
@@ -137,7 +153,7 @@ class ApplicationViews extends Component {
                 addMessage={this.addMessage}
                 // employees={this.state.employees}
               />
-            );
+            )
           }}
         />
         <Route exact
@@ -146,16 +162,15 @@ class ApplicationViews extends Component {
             // Find the message with the id of the route parameter
             let message = this.state.messages.find(
               message => message.id === parseInt(props.match.params.messageId)
-            );
+            )
 
             // If the message wasn't found, create a default one
             if (!message) {
               message = { id: 404, name: "404", message: "Message not found" };
             }
-
             return (
               <MessageDetail message={message} deleteMessage={this.deleteMessage} />
-            );
+            )
           }}
         />
         <Route
@@ -168,17 +183,16 @@ class ApplicationViews extends Component {
                   tasks={this.state.tasks}
                   deleteTask={this.deleteTask}
                 />
-              );
+              )
             } else {
-              return <Redirect to="/login" />;
+              return <Redirect to="/" />;
             }
           }}
         />
-
         <Route path="/login" component={Login} />
       </React.Fragment>
-    );
-  }
-}
+    )
+        }
+      }
 export default withRouter(ApplicationViews);
 

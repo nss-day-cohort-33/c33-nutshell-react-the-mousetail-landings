@@ -11,6 +11,26 @@
       "message": "Hi there",
       "userId": null,
       "id": 1
+    },
+    {
+      "message": "Hello, How are you today!",
+      "userId": null,
+      "id": 2
+    },
+    {
+      "message": "I am enjoying the NSS Journey!",
+      "userId": null,
+      "id": 3
+    },
+    {
+      "message": "Please help me, somebody, anybody! Yikes!!",
+      "userId": null,
+      "id": 4
+    },
+    {
+      "message": "What in the Fried Chicken is this?",
+      "userId": null,
+      "id": 5
     }
   ],
   "articles": [],
@@ -31,5 +51,13 @@
       "otherFriendId": 3
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": 1,
+      "userId": 3,
+      "name": "Take out garbage",
+      "completionDate": "2019-05-07",
+      "completed": false
+    }
+  ]
 }
