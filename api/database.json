@@ -59,20 +59,20 @@
   ],
   "events": [
     {
-      "id": 1,
-      "userId": 1,
-      "title": "Jordan's Birthday Dinner",
-      "location": "Our House",
-      "date": "2019-08-07",
-      "time": "21:00"
+      "userId": null,
+      "title": "Walk Adam",
+      "location": "neighborhood",
+      "date": "2019-07-24",
+      "time": "12pm",
+      "id": 3
     },
     {
       "userId": null,
-      "title": "Purple",
+      "title": "Kids Day Out",
       "location": "Gymnastics Gym",
-      "date": "0005-03-04",
-      "time": "11:00am",
-      "id": 2
+      "date": "1212-12-12",
+      "time": "12",
+      "id": 4
     }
   ],
   "friends": [

@@ -42,8 +42,8 @@ componentDidMount() {
 }
 
 addEvent = (thing) => {
-  return TaskManager.post("events", thing)
-      .then(() => TaskManager.getAll("events"))
+  return EventManager.post("events", thing)
+      .then(() => EventManager.getAll("events"))
       .then(eventData =>
           this.setState({
             events: eventData 
@@ -51,9 +51,16 @@ addEvent = (thing) => {
   );
 }
 
-isAuthenticated = () => sessionStorage.getItem("userId") !== null
+deleteEvent = (id) => {
+  return EventManager.removeAndList("events", id)
+    .then( eventsData => {
+      this.props.history.push("/home")
+      this.setState({
+        events: eventsData})
+      })
+  }
 
-//need to add the edit (get and then put) and delete (delete) fetch calls for events
+isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
 addTask = (task) => {
   return TaskManager.post("tasks", task)

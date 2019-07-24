@@ -3,7 +3,6 @@ import "./Event.css"
 
 export default class EventForm extends Component {
     state = {
-        userId: "",
         title: "",
         location: "",
         date: "",
@@ -18,8 +17,9 @@ export default class EventForm extends Component {
 
       constructNewEvent = inputEvent => {
         inputEvent.preventDefault();
+        let userId = sessionStorage.getItem("userId")
           const newEvent = {
-            userId: parseInt(this.state.userId),
+            userId: parseInt(userId),
             title: this.state.title,
             location: this.state.location,
             date: this.state.date,
