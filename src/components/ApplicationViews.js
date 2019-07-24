@@ -26,9 +26,38 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-addEvent = (thing) => {
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null
+  // onLogin = () => {
+  //   this.setState({
+  //     userId: sessionStorage.getItem("userID")
+  //   })
+  //   this.loadAllData(this.state.userId)
+  // }
+  // componentDidMount() {
+  //     let currentUserId = sessionStorage.getItem("userID")
+  //     this.loadAllData(currentUserId)}
+  // loadAllData = (currentUserId) => {
+    const newState = {}
+  
+    ArticleManager.getAll("articles").then(
+      articles => (newState.articles = articles)
+    );
+    EventManager.getAll("events").then(
+    events => (newState.events = events)
+    );
+    MessageManager.getAll("messages").then(
+      messages => (newState.messages = messages)
+    );
+    TaskManager.getAll("tasks")
+      .then(tasks => (newState.tasks = tasks))
+      .then(() => this.setState(newState));
+  }
+
+  addEvent = (thing) => {
+    //the part about "sessionStorage" is copied from Alex's group project
+    //it probably needs editing and some break down becasue I do not fully understand it
   return EventManager.post("events", thing)
-      .then(() => EventManager.getAll("events"))
+      .then(() => EventManager.getAll("events", sessionStorage.getItem("userId")))
       .then(eventData =>
           this.setState({
             events: eventData 
@@ -44,29 +73,7 @@ deleteEvent = (id) => {
         events: eventsData})
       })
   }
-
-isAuthenticated = () => sessionStorage.getItem("userId") !== null
-  componentDidMount() {
-    const newState = {};
-
-    ArticleManager.getAll("articles").then(
-      articles => (newState.articles = articles)
-    );
-    EventManager.getAll("events").then(
-    events => (newState.events = events)
-    );
-    MessageManager.getAll("messages").then(
-      messages => (newState.messages = messages)
-    );
-    TaskManager.getAll("tasks")
-      .then(tasks => (newState.tasks = tasks))
-      .then(() => this.setState(newState));
-  }
-
-  // Check if credentials are in local storage; isAuthenticated is a method
-  // will return true or false
-  isAuthenticated = () => sessionStorage.getItem("userId") !== null;
-
+  
   deleteMessage = id => {
     return fetch(`http://localhost:5002/messages/${id}`, {
       method: "DELETE"

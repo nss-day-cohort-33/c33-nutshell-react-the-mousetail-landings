@@ -18,13 +18,12 @@ export default class EventForm extends Component {
 
       constructNewEvent = inputEvent => {
         inputEvent.preventDefault();
-        //let userId = sessionStorage.getItem("userId")
           const newEvent = {
-            userId: Number(sessionStorage.getItem("userId")),
             title: this.state.title,
             location: this.state.location,
             date: this.state.date,
-            time: this.state.time
+            time: this.state.time,
+            userId: Number(sessionStorage.getItem("userId"))
           };
         this.props
             .addEvent(newEvent)
@@ -56,7 +55,7 @@ export default class EventForm extends Component {
             </form>
             <section className="events">
                 {this.props.events.map(each =>
-                    <div key={each.userId} className="event-card">
+                    <div key={each.username} className="event-card">
                         <div className="event-card-body">
                             <div className="event-card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}

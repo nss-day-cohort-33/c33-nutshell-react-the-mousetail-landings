@@ -5,8 +5,8 @@ export default {
           return APImanager.get(resource, id)
     },
 
-    getAll(resource) {
-          return APImanager.all(resource)
+    getAll(resource, id) {
+          return APImanager.all(resource, id)
     },
 
     post(resource, resourceObj) {

@@ -59,12 +59,52 @@
   ],
   "events": [
     {
+      "title": "Help Mom",
+      "location": "Her House",
+      "date": "2019-12-24",
+      "time": "5pm",
+      "username": null,
+      "id": 4
+    },
+    {
+      "title": "Kids Day Out",
+      "location": "Gymnastics Gym",
+      "date": "2029-07-16",
+      "time": "2:30pm",
+      "username": null,
+      "id": 5
+    },
+    {
+      "title": "Walk Adam",
+      "location": "neighborhood",
+      "date": "2019-08-24",
+      "time": "6pm",
       "userId": null,
-      "title": "Make a Commit",
-      "location": "NSS",
-      "date": "2019-07-23",
-      "time": "3:55pm",
-      "id": 1
+      "id": 6
+    },
+    {
+      "title": "Help Mom",
+      "location": "home",
+      "date": "7777-07-07",
+      "time": "7",
+      "userId": null,
+      "id": 7
+    },
+    {
+      "title": "Walk Adam",
+      "location": "neighborhood",
+      "date": "1212-12-12",
+      "time": "3pm",
+      "userId": null,
+      "id": 8
+    },
+    {
+      "title": "Walk Adam",
+      "location": "neighborhood",
+      "date": "1212-12-12",
+      "time": "3pm",
+      "userId": null,
+      "id": 9
     }
   ],
   "friends": [
