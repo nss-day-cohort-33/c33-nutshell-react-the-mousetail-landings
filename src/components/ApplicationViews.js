@@ -71,9 +71,9 @@ getUser = (userName) => {
 
         <Route exact path="/home" render={props => {
             return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
-              (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
-              (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
-              (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
+              // (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
+              // (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
+              // (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
           }}/>
 
         <Route
