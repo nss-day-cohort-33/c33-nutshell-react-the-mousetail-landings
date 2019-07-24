@@ -60,19 +60,11 @@
   "events": [
     {
       "userId": null,
-      "title": "Walk Adam",
-      "location": "neighborhood",
-      "date": "2019-07-24",
-      "time": "12pm",
-      "id": 3
-    },
-    {
-      "userId": null,
-      "title": "Kids Day Out",
-      "location": "Gymnastics Gym",
-      "date": "1212-12-12",
-      "time": "12",
-      "id": 4
+      "title": "Make a Commit",
+      "location": "NSS",
+      "date": "2019-07-23",
+      "time": "3:55pm",
+      "id": 1
     }
   ],
   "friends": [

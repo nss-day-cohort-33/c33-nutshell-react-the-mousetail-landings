@@ -1,31 +1,17 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-<<<<<<< HEAD
-
-// import ArticleManager from "../modules/ArticleManager"
-import EventManager from "./modules/EventManager"
-// import MessageManager from "../modules/MessageManager"
-import TaskManager from "./modules/TaskManager"
-import LoginManager from "./modules/LoginManager"
-import TaskList from "./task/TaskList"
-import EventForm from "./event/EventForm"
-// import ArticleList from "./article/ArticleList"
-// import MessageList from "./message/MessageList"
-=======
-import NavBar from "./nav/NavBar";
 import ArticleManager from "./modules/ArticleManager"
 import EventManager from "./modules/EventManager"
+import EventForm from "./event/EventForm"
 import MessageManager from "./modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
-import ArticleList from "./article/ArticleList"
-import EventList from "./event/EventList"
+import HomeList from "./home/HomeList"
 import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageDetail from "./message/MessageDetail"
->>>>>>> 536eae38b32b2745dc894bb4921ad20a2637ce89
 import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
 import Register from "./authentication/Register"
@@ -79,7 +65,7 @@ isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
   // Check if credentials are in local storage; isAuthenticated is a method
   // will return true or false
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null;
 
   deleteMessage = id => {
     return fetch(`http://localhost:5002/messages/${id}`, {
@@ -132,11 +118,9 @@ getUser = (userName) => {
       <React.Fragment>
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/home" render={props => {
-            return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
-              (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
-              (<EventForm  {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} />)
-              (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
+          return ( <HomeList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} events={this.state.events}/>)
           }}/>
+
         <Route
           exact path="/register" render={props => {
             return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
@@ -150,7 +134,6 @@ getUser = (userName) => {
             return <Redirect to="/login" /> 
           }}} />
 
-        <Route exact path="/login" component={Login} />
         <Route
           path="/friends" render={props => {
             return null

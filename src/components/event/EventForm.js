@@ -20,7 +20,7 @@ export default class EventForm extends Component {
         inputEvent.preventDefault();
         //let userId = sessionStorage.getItem("userId")
           const newEvent = {
-            userId: Number(sessionStorage.getitem("userId")),
+            userId: Number(sessionStorage.getItem("userId")),
             title: this.state.title,
             location: this.state.location,
             date: this.state.date,
@@ -28,7 +28,7 @@ export default class EventForm extends Component {
           };
         this.props
             .addEvent(newEvent)
-            .then(() => this.props.history.push("/home"));
+            .then(() => this.props.history.push("/events"));
     }
 
           
@@ -56,20 +56,20 @@ export default class EventForm extends Component {
             </form>
             <section className="events">
                 {this.props.events.map(each =>
-                    <div key={each.userId} className="card">
-                        <div className="card-body">
-                            <div className="card-title">
+                    <div key={each.userId} className="event-card">
+                        <div className="event-card-body">
+                            <div className="event-card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}
-                                <h2>{each.title}</h2>
-                                <h4>{each.date}</h4>
-                                <h4>{each.time}</h4>
-                                <h3>{each.location}</h3>
+                                <h5>{each.title}</h5>
+                                <h6>{each.date}</h6>
+                                <p>{each.time}</p>
+                                <h6>{each.location}</h6>
                                 <button
                                     onClick={() => this.props.deleteEvent(each.id)}
-                                    className="card-link">Delete</button>
+                                    className="event-card-link">Delete</button>
                                     <button
                                     onClick={() => this.props.editEvent(each.id)}
-                                    className="card-link">Edit</button>
+                                    className="event-card-link">Edit</button>
                             </div>
                         </div>
                     </div>

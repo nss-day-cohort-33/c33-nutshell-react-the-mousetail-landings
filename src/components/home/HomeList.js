@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TaskList from "./task/TaskList";
 
 export default class HomeList extends Component {
   render() {
@@ -17,6 +16,28 @@ export default class HomeList extends Component {
             </div>
           ))}
         </section>
+        <section className="events">
+                {this.props.events.map(each =>
+                    <div key={each.userId} className="event-card">
+                        <div className="event-card-body">
+                            <div className="event-card-title">
+                                {/* <img src={dog} className="icon--dog" /> */}
+                                <h5>{each.title}</h5>
+                                <h6>{each.date}</h6>
+                                <p>{each.time}</p>
+                                <h6>{each.location}</h6>
+                                <button
+                                    onClick={() => this.props.deleteEvent(each.id)}
+                                    className="event-card-link">Delete</button>
+                                    <button
+                                    onClick={() => this.props.editEvent(each.id)}
+                                    className="event-card-link">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            </section>
       </React.Fragment>
     );
   }

@@ -1,0 +1,19 @@
+.event-card-body {
+    border: 1px solid gray;
+  }
+
+  .event-card {
+    width: 20rem;
+  }
+  
+  .event-card-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .event-card-link {
+    margin: 12px 0 0 0;
+    font-size: 0.7em;
+  }
