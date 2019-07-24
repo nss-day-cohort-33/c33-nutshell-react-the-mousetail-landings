@@ -1,14 +1,38 @@
 {
   "users": [
-      { "id": 1,
-        "username": "Steve",
-        "email": "me@me.com" }
-    ],
+    {
+      "id": 1,
+      "username": "Steve",
+      "email": "me@me.com"
+    }
+  ],
   "messages": [
-      { "id": 1,
-        "userId": 1,
-        "message": "What's up?" }
-    ],
+    {
+      "id": 1,
+      "userId": 1,
+      "message": "What's up?"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "message": "Hi"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "message": "What?"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "message": "Hello?"
+    },
+    {
+      "message": "",
+      "userId": null,
+      "id": 5
+    }
+  ],
   "articles": [
     {
       "id": 1,
@@ -29,15 +53,19 @@
     }
   ],
   "friends": [
-      { "connectionId": 1,
-        "userId": 1,
-        "otherFriendId": 3 }
-    ],
+    {
+      "connectionId": 1,
+      "userId": 1,
+      "otherFriendId": 3
+    }
+  ],
   "tasks": [
-      { "id": 1,
-        "userId": 3,
-        "name": "Take out garbage",
-        "completionDate": "2019-05-07",
-        "completed": false }
-    ]
+    {
+      "id": 1,
+      "userId": 3,
+      "name": "Take out garbage",
+      "completionDate": "2019-05-07",
+      "completed": false
+    }
+  ]
 }

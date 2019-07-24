@@ -36,7 +36,7 @@ class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleLogin}>
-        <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h1 className="h3 mb-3 font-weight-normal">Welcome to NUTSHELL!<p>Please sign in</p></h1>
         <label htmlFor="inputUsername">Username</label>
         <input
           onChange={this.handleFieldChange}
