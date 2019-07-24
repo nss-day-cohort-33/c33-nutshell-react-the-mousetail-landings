@@ -6,7 +6,8 @@ export default class EventForm extends Component {
         title: "",
         location: "",
         date: "",
-        time: ""
+        time: "",
+        userId: ""
       }
 
       handleFieldChange = evt => {
@@ -17,9 +18,9 @@ export default class EventForm extends Component {
 
       constructNewEvent = inputEvent => {
         inputEvent.preventDefault();
-        let userId = sessionStorage.getItem("userId")
+        //let userId = sessionStorage.getItem("userId")
           const newEvent = {
-            userId: parseInt(userId),
+            userId: Number(sessionStorage.getitem("userId")),
             title: this.state.title,
             location: this.state.location,
             date: this.state.date,
