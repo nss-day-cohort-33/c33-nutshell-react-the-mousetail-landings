@@ -1,0 +1,38 @@
+.tasks {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon--task {
+    width: 75px;
+    height: 75px;
+}
+
+.card {
+    width: 50rem;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-link {
+    margin: 12px 0 0 0;
+    font-size: 0.7em;
+}
+
+.TaskList {
+    font-size: 0.75em;
+}
+
+.addTaskButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+  }
+
+
+

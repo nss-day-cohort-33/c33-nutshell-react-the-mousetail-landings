@@ -1,16 +1,15 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import NavBar from "./nav/NavBar";
-
 // import ArticleManager from "../modules/ArticleManager"
 // import EventManager from "../modules/EventManager"
 // import MessageManager from "../modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
+import TaskForm from "./task/TaskForm"
 import ArticleList from "./article/ArticleList"
-import EventList from "./event/EventList"
+import EventForm from "./event/EventForm"
 import MessageList from "./message/MessageList"
 import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
@@ -42,7 +41,7 @@ componentDidMount() {
       .then(() => this.setState(newState))
 }
 
-isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
 addTask = (task) => {
   return TaskManager.post("tasks", task)
@@ -72,7 +71,7 @@ getUser = (userName) => {
         <Route exact path="/home" render={props => {
             return ( <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />)
               // (<ArticleList  {...props} articles={this.state.articles} deleteArticle={this.deleteArticle} />)
-              // (<EventList  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
+              // (<EventForm  {...props} events={this.state.events} deleteEvent={this.deleteEvent} />)
               // (<MessageList  {...props} messages={this.state.messages} deleteMessage={this.deleteMessage} />)
           }}/>
 
@@ -108,14 +107,17 @@ getUser = (userName) => {
           }}
         />
 
-        <Route
-          path="/tasks" render={(props) => {
+        <Route exact path="/tasks" render={(props) => {
             if (this.isAuthenticated()) {
               return <TaskList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} />
             } else {
                 return <Redirect to="/" />
                }
           }} />
+
+        <Route path="/tasks/new" render={(props) => {
+            return <TaskForm {...props} addTask={this.addTask}/>
+        }} />
 
 
       </React.Fragment>

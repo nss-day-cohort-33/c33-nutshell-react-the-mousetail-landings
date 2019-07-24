@@ -72,10 +72,24 @@
   "tasks": [
     {
       "id": 1,
-      "userId": 3,
+      "userId": 2,
       "name": "Take out garbage",
       "completionDate": "2019-05-07",
       "completed": false
+    },
+    {
+      "name": "Get this to work",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": null,
+      "id": 2
+    },
+    {
+      "name": "Get userId to show in database",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": null,
+      "id": 3
     }
   ]
 }

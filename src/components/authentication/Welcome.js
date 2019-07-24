@@ -4,37 +4,6 @@ import {withRouter} from 'react-router-dom'
 
  class Welcome extends Component {
 
-    // // Set initial state needs to be empty
-    // state = {
-    //     username: "",
-    //     password: ""
-    // }
-
-    // // Update state whenever an input field is edited
-    // handleFieldChange = (evt) => {
-    //     const stateToChange = {}
-    //     stateToChange[evt.target.id] = evt.target.value
-    //     this.setState(stateToChange)
-    // }
-
-    // // Simplistic handler for login submit; e is event
-    // handleLogin = (e) => {
-    //     e.preventDefault()
-
-    //     /*
-    //         For now, just store the username and password that
-    //         the customer enters into local storage.
-    //     */
-    //     sessionStorage.setItem(
-    //         "credentials",                       //key
-    //         JSON.stringify({
-    //             username: this.state.username,        //values coming from state
-    //             password: this.state.password
-    //         })
-    //     )
-    //     this.props.history.goBack()
-    // }
-//form of the form
     render() {
         return (
             <form>
