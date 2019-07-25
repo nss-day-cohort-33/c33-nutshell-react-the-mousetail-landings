@@ -126,7 +126,7 @@ getUser = (userName) => {
           console.log(this.state.messages)
           console.log(this.state.tasks)
             return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
-              events={this.state.events} />)
+              events={this.state.events} deleteEvent={this.deleteEvent} />)
           }}/>
 
         <Route
