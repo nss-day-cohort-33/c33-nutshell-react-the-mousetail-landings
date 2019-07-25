@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import "./Event.css"
 import EventManager from '../modules/EventManager';
 
-let userId = sessionStorage.getItem("userId")
+let userId = parseInt(sessionStorage.getItem("userId"))
 export default class EventForm extends Component {
     state = {
         title: "",
@@ -12,6 +12,9 @@ export default class EventForm extends Component {
         userId: userId
       }
 
+      //right now it is still intaking the userId as a string and not a number
+      //lets see if we can fix that next
+      
       handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;

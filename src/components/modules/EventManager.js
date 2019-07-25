@@ -24,7 +24,7 @@ export default {
      
     getEventByUserID(userId) {
       return fetch(`http://localhost:5002/events?userId=${userId}&complete=false`)
-      .then ( taskData => taskData.json(),
+      .then ( eventData => eventData.json(),
       )
   }
   }

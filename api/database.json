@@ -80,20 +80,28 @@
   ],
   "events": [
     {
-      "id": 1,
-      "title": "a",
-      "location": "a",
-      "date": "2019-07-24",
-      "time": "4",
-      "userId": 8
+      "title": "Kids Day Out",
+      "location": "Gymnastics Gym",
+      "date": "2019-08-02",
+      "time": "3:45pm",
+      "userId": 4,
+      "id": 1
     },
     {
-      "title": "Help Mom",
-      "location": "home",
-      "date": "1111-11-11",
-      "time": "3:45pm",
-      "userId": "4",
+      "title": "Popping the Corns",
+      "location": "Kitchen-to-Living-Room",
+      "date": "2019-10-02",
+      "time": "5pm",
+      "userId": 4,
       "id": 2
+    },
+    {
+      "title": "Purple",
+      "location": "neighborhood",
+      "date": "1990-12-22",
+      "time": "4:00pm",
+      "userId": 4,
+      "id": 3
     }
   ],
   "friends": [

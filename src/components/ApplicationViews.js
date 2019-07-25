@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import ArticleManager from "./modules/ArticleManager"
 import EventManager from "./modules/EventManager"
 import EventForm from "./event/EventForm"
+import EventEditForm from "./event/EventEditForm"
 import MessageManager from "./modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
@@ -69,6 +70,16 @@ deleteEvent = (id) => {
       this.props.history.push("/home")
       this.setState({
         events: eventsData})
+      })
+  }
+
+  editForm = (eventToEdit) => {
+    return EventManager.put("events", eventToEdit)
+      .then(() => EventManager.get("events", sessionStorage.getItem("userId")))
+      .then(events => {
+        this.setState({
+          events: events
+        })
       })
   }
   
@@ -148,6 +159,12 @@ getUser = (userName) => {
           } else {
             return <Redirect to="/login" /> 
           }}} />
+        
+        <Route
+          path="/events/:eventId(\d+)/edit" render={props => {
+            return <EventEditForm {...props} editForm={this.editForm} />
+          }}
+        />
 
         <Route
           path="/friends" render={props => {
