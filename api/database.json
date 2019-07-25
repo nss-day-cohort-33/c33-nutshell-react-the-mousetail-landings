@@ -18,29 +18,19 @@
   ],
   "messages": [
     {
-      "message": "Hi there",
-      "userId": 2,
-      "id": 1
-    },
-    {
-      "message": "Hello, How are you today!",
-      "userId": null,
-      "id": 2
-    },
-    {
-      "message": "I am enjoying the NSS Journey!",
-      "userId": null,
-      "id": 3
-    },
-    {
       "message": "Please help me, somebody, anybody! Yikes!!",
-      "userId": null,
+      "userId": 2,
       "id": 4
     },
     {
       "message": "What in the Fried Chicken is this?",
-      "userId": null,
+      "userId": 2,
       "id": 5
+    },
+    {
+      "message": "What does this do?",
+      "userId": null,
+      "id": 6
     }
   ],
   "articles": [],
@@ -129,7 +119,7 @@
     {
       "name": "Got the checkbox to mark a task complete",
       "completionDate": "2019-07-23",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 13
     }
