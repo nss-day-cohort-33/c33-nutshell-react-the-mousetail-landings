@@ -11,7 +11,6 @@ import TaskList from "./task/TaskList"
 import TaskForm from "./task/TaskForm"
 import HomeList from "./home/HomeList"
 import ArticleList from "./article/ArticleList"
-import EventForm from "./event/EventForm"
 import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageDetail from "./message/MessageDetail"
@@ -135,7 +134,8 @@ getUser = (userName) => {
             return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
           }}
           />
-            
+        <Route path="/login" component={Login}/>
+        
         <Route path="/events" render={(props) => {
           if(this.isAuthenticated()) {
             return <EventForm {...props} addEvent={this.addEvent} deleteEvent={this.deleteEvent} events={this.state.events} />

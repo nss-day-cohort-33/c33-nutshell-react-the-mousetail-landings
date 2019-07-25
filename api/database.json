@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "Steve",
-      "password": "123"
+      "password": "123",
       "email": "me@me.com"
     },
     {
@@ -15,6 +15,11 @@
       "username": "walter",
       "password": "walter",
       "id": 3
+    },
+    {
+      "username": "mjb",
+      "password": "mjb",
+      "id": 4
     }
   ],
   "messages": [

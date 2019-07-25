@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import TaskManager from "../modules/TaskManager"
+import EventManager from "../modules/EventManager"
 
 export default class HomeList extends Component {
   state={
-    tasks: []
+    tasks: [],
+    events: []
 }
 
 componentDidMount() {
