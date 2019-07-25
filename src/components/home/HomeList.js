@@ -3,7 +3,7 @@ import TaskManager from "../modules/TaskManager"
 
 export default class HomeList extends Component {
   state={
-    tasks: []
+    tasks: [],
 }
 
 componentDidMount() {
@@ -54,7 +54,7 @@ componentDidMount() {
             <div key={article.id} className="card">
               <div className="card-body">
                 <div className="card-title">
-                  <h5>{article.name}</h5>
+                  <h5>{this.props.article.name}</h5>
                   <h5>{article.completionDate}</h5>
                 </div>
               </div>

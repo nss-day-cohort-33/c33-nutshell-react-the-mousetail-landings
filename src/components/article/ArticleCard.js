@@ -10,9 +10,9 @@ export default class ArticleCard extends Component {
         <div className="card-body">
           <div className="card-title">
             {/* <img src={dog} className="icon--dog" alt="dog"/> */}
-            <h5>{this.props.article.title}</h5>
-            <h5>{this.props.article.url}</h5>
-            <h5>{this.props.article.synopsis}</h5>
+            <h5>{"Title: "}{this.props.article.title}</h5>
+            <h5>{"Synopsis: "}{this.props.article.synopsis}</h5>
+            <h5>{"URL: "}{this.props.article.url}</h5>
             {/* <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
               Details
             </Link> */}
