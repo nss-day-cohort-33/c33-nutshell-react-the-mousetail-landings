@@ -4,12 +4,22 @@
       "id": 1,
       "username": "Steve",
       "email": "me@me.com"
+    },
+    {
+      "username": "jeff",
+      "password": "jeff",
+      "id": 2
+    },
+    {
+      "username": "walter",
+      "password": "walter",
+      "id": 3
     }
   ],
   "messages": [
     {
       "message": "Hi there",
-      "userId": null,
+      "userId": 2,
       "id": 1
     },
     {
@@ -37,8 +47,16 @@
   "events": [
     {
       "id": 1,
-      "userId": 1,
+      "userId": 2,
       "title": "Jordan's Birthday Dinner",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Dinner Part",
       "location": "Our House",
       "date": "2019-08-07",
       "time": "21:00"
@@ -63,53 +81,64 @@
       "name": "Get this to work",
       "completionDate": "2019-07-24",
       "completed": false,
-      "userId": null,
+      "userId": 2,
       "id": 2
     },
     {
       "name": "Get userId to show in database",
       "completionDate": "2019-07-24",
       "completed": false,
-      "userId": null,
+      "userId": 2,
       "id": 3
     },
     {
-      "name": "Is userId being added",
-      "completionDate": "2019-07-24",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "name": "User Id updating?",
-      "completionDate": "2019-07-24",
-      "completed": false,
-      "id": 5
-    },
-    {
       "name": "Get UserId to store in database",
       "completionDate": "2019-07-24",
       "completed": false,
-      "id": 6
-    },
-    {
-      "name": "Get UserId to store in database",
-      "completionDate": "2019-07-24",
-      "completed": false,
-      "userId": null,
+      "userId": 2,
       "id": 7
-    },
-    {
-      "name": "Lets Work ",
-      "completionDate": "2019-07-24",
-      "completed": false,
-      "id": 8
     },
     {
       "name": "HOw about now",
       "completionDate": "2019-07-24",
       "completed": false,
-      "userId": null,
+      "userId": 2,
       "id": 9
+    },
+    {
+      "name": "mo is the mo",
+      "completionDate": "2019-01-01",
+      "completed": false,
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "name": "sldkfj",
+      "completionDate": "2019-01-01",
+      "completed": false,
+      "userId": 2,
+      "id": 11
+    },
+    {
+      "name": "Will this display?",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "name": "Walter's first task",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": null,
+      "id": 13
+    },
+    {
+      "name": "Walter's second task",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": null,
+      "id": 14
     }
   ]
 }

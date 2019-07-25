@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import TaskManager from "../modules/TaskManager";
+import TaskList from "./TaskList";
 // import "./Task.css";
 
-let userId = sessionStorage.getItem("userId")
-console.log(userId.id)
+let currentUserId = parseInt(sessionStorage.getItem("userId"))
+
 export default class TaskForm extends Component {
   // Set initial state
   state = {
     taskName: "",
     completionDate: "",
     completed: false,
-    userId: parseInt(userId.id)
+    userId: currentUserId
   };
+
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -80,4 +83,19 @@ export default class TaskForm extends Component {
   }
 }
 
+// App View
+// getUserTasks = () => {
+//   TaskManager.getAll(sessionStorage.getItem("userId"))
+//     .then(user_tasks => this.setState({tasks: user_tasks}))
+// }
 
+// pass down to TaskList in AppView
+// getUserTasks={this.getUserTasks}
+
+// in TaskList
+// componentDidMount() {
+//   this.props.getUserTasks()
+// }
+
+// In TaskManager getAll(userId){
+// return fetch (`${remoteURL}/tasks?userId=${userId}.then(taskData => taskData.json())}

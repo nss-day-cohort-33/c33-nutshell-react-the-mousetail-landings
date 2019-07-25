@@ -25,14 +25,12 @@ class Login extends Component {
     LoginManager.get(this.state.username).then(result => {
       console.log('result', result);
       if (result.length > 0) {
-        sessionStorage.setItem(
-          "userId",
-          JSON.stringify({
-            username: result[0].username,
-            password: result[0].password,
-            id: result[0].id
-          })
-        );
+        result.forEach(res => {
+          sessionStorage.setItem(
+            "userId", res.id
+          );
+        });
+
         alert("Welcome Back")
 
         this.props.history.push('/home');

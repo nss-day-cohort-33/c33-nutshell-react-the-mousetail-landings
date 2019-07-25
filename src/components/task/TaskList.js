@@ -1,7 +1,28 @@
 import React, { Component } from "react"
 import "./Task.css"
+import TaskManager from "../modules/TaskManager";
 
+let userId = sessionStorage.getItem("userId")
 export default class TaskList extends Component {
+    state={
+        tasks: []
+    }
+
+    componentDidMount() {
+        TaskManager.getTaskByUserID(userId).then(tasks => {this.setState({ tasks })})
+        }
+
+    // completeTask() {
+    //     TaskManager.getTaskByUserID(userId)
+    //     .then(task => {
+    //         task.complete = true
+    //     })
+    //     TaskManager.put(resource, resourceObjId)
+    //     .then( () => {TaskManager.getTaskByUserID(userId)
+    //         .then(tasks => {this.setState({tasks})})
+    //     }
+    // }
+
     render () {
         return (
             <React.Fragment>
@@ -15,7 +36,7 @@ export default class TaskList extends Component {
 
                 <section className="tasks">
             {
-                this.props.tasks.map(task =>
+                this.state.tasks.map(task =>
                     <div key={task.id} className="card">
                         <div className="card-body">
                             <div className="card-title">
