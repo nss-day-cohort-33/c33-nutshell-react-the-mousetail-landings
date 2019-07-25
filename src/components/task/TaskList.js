@@ -4,13 +4,18 @@ import TaskManager from "../modules/TaskManager";
 
 let userId = sessionStorage.getItem("userId")
 export default class TaskList extends Component {
-    state={
-        tasks: []
-    }
 
     componentDidMount() {
-        TaskManager.getTaskByUserID(userId).then(tasks => {this.setState({ tasks })})
-        }
+          this.props.getUserTasks()
+         }
+
+    // state={
+    //     tasks: []
+    // }
+
+    // componentDidMount() {
+    //     TaskManager.getTaskByUserID(userId).then(tasks => {this.setState({ tasks })})
+    //     }
 
     // completeTask() {
     //     TaskManager.getTaskByUserID(userId)
@@ -36,7 +41,7 @@ export default class TaskList extends Component {
 
                 <section className="tasks">
             {
-                this.state.tasks.map(task =>
+                this.props.tasks.map(task =>
                     <div key={task.id} className="card">
                         <div className="card-body">
                             <div className="card-title">

@@ -28,27 +28,28 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  // getUserTasks = () => {
-  //   TaskManager.getAll(sessionStorage.getItem("userId"))
-  //     .then(user_tasks => this.setState({tasks: user_tasks}))
-  // }
-  componentDidMount() {
-    const newState = {};
-
-    ArticleManager.getAll("articles")
-    .then(articles => (newState.articles = articles))
-    .then(() =>  MessageManager.getAll("messages") )
-    .then(messages => (newState.messages = messages))
-    // .then(() => TaskManager.getAll("tasks") )
-    // .then(tasks => (newState.tasks = tasks))
-
-    // .then(() => EventManager.getAll("events") )
-    // .then(events => (newState.events = events));
-    .then(() => this.setState(newState))
-
-
+  getUserTasks = () => {
+    TaskManager.getAll("tasks", sessionStorage.getItem("userId"))
+      .then(user_tasks => this.setState({tasks: user_tasks}))
 
   }
+  // componentDidMount() {
+  //   const newState = {};
+
+  //   ArticleManager.getAll("articles")
+  //   .then(articles => (newState.articles = articles))
+  //   .then(() =>  MessageManager.getAll("messages") )
+  //   .then(messages => (newState.messages = messages))
+  //   // .then(() => TaskManager.getAll("tasks") )
+  //   // .then(tasks => (newState.tasks = tasks))
+
+  //   // .then(() => EventManager.getAll("events") )
+  //   // .then(events => (newState.events = events));
+  //   .then(() => this.setState(newState))
+
+
+
+  // }
 
   // Check if credentials are in local storage; isAuthenticated is a method
   // will return true or false
@@ -110,13 +111,19 @@ getUser = (userName) => {
     return (
       <React.Fragment>
         <Route exact path="/" component={Welcome}/>
+
         <Route exact path="/home" render={props => {
           console.log(this.state.messages)
           console.log(this.state.tasks)
+          if (this.isAuthenticated()) {
             return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
               events={this.state.events} />)
+            } else {
+              return <Redirect to="/" />
+             }
 
           }}/>
+
         <Route
           exact path="/register" render={props => {
             return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
@@ -194,7 +201,7 @@ getUser = (userName) => {
                 <TaskList
                   {...props}
                   tasks={this.state.tasks}
-                  // getUserTasks={this.getUserTasks}
+                  getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
                 />
               )

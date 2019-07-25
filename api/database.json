@@ -139,6 +139,13 @@
       "completed": false,
       "userId": null,
       "id": 14
+    },
+    {
+      "name": "Got tasks by userId",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": 2,
+      "id": 15
     }
   ]
 }
