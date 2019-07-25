@@ -20,7 +20,13 @@ export default {
 
     put(resource, resourceObjId) {
       return APImanager.put(resource, resourceObjId)
-    }
+    },
+
+    getTaskByUserID(userId) {
+      return fetch(`http://localhost:5002/tasks?userId=${userId}&complete=false`)
+      .then ( taskData => taskData.json(),
+      )
+  }
 
 
   }

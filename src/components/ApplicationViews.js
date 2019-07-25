@@ -7,10 +7,20 @@ import ArticleList from "./article/ArticleList";
 import ArticleForm from "./article/ArticleForm";
 import TaskManager from "./modules/TaskManager";
 import TaskList from "./task/TaskList";
-import Login from "./authentication/Login";
-import APImanager from "./modules/APImanager";
+import EventManager from "./modules/EventManager"
+import MessageManager from "./modules/MessageManager"
+import LoginManager from "./modules/LoginManager"
+import TaskForm from "./task/TaskForm"
+import HomeList from "./home/HomeList"
+import EventForm from "./event/EventForm"
+import MessageList from "./message/MessageList"
+import MessageForm from "./message/MessageForm"
+import MessageDetail from "./message/MessageDetail"
+import Login from "./authentication/Login"
+import Welcome from "./authentication/Welcome"
+import Register from "./authentication/Register"
 
-export default class ApplicationViews extends Component {
+class ApplicationViews extends Component {
   state = {
     users: [],
     messages: [],
@@ -20,19 +30,51 @@ export default class ApplicationViews extends Component {
     tasks: []
   };
 
+  // getUserTasks = () => {
+  //   TaskManager.getAll(sessionStorage.getItem("userId"))
+  //     .then(user_tasks => this.setState({tasks: user_tasks}))
+  // }
   componentDidMount() {
     const newState = {};
 
     ArticleManager.getAll("articles")
-      .then(articles => (newState.articles = articles))
-      .then(
-        TaskManager.getAll("tasks")
-          .then(tasks => (newState.tasks = tasks))
-          .then(() => this.setState(newState))
-      );
+  //     .then(articles => (newState.articles = articles))
+  //     .then(
+  //       TaskManager.getAll("tasks")
+  //         .then(tasks => (newState.tasks = tasks))
+  //         .then(() => this.setState(newState))
+  //     );
+  // }
+
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+    .then(articles => (newState.articles = articles))
+    .then(() =>  MessageManager.getAll("messages") )
+    .then(messages => (newState.messages = messages))
+    // .then(() => TaskManager.getAll("tasks") )
+    // .then(tasks => (newState.tasks = tasks))
+
+    // .then(() => EventManager.getAll("events") )
+    // .then(events => (newState.events = events));
+    .then(() => this.setState(newState))
+
+
+
   }
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  // Check if credentials are in local storage; isAuthenticated is a method
+  // will return true or false
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null;
+
+  deleteMessage = id => {
+    return fetch(`http://localhost:5002/messages/${id}`, {
+      method: "DELETE"
+    })
+      .then(MessageManager.getAll)
+      .then(messages => {
+        this.props.history.push("/messages");
+        this.setState({ messages: messages });
+      });
+  };
 
   addTask = task => {
     return TaskManager.post("tasks", task)
@@ -66,9 +108,55 @@ export default class ApplicationViews extends Component {
         this.setState({ articles: articles });
       });
   };
+
+  addMessage = message =>
+    MessageManager.post(message)
+      .then(() => MessageManager.getAll())
+      .then(messages =>
+        this.setState({
+          messages: messages
+        })
+      );
+
+  updateMessage = editedMessageObject => {
+    return MessageManager.put(editedMessageObject)
+      .then(() => MessageManager.getAll())
+      .then(messages => {
+        this.setState({
+          messages: messages
+        });
+      });
+  };
+
+  // completeTask = (completedTaskObject) => {
+  //   return TaskManager.put("tasks", completedTaskObject)
+  //   .then(() => TaskManager.getTaskByUserID(userId))
+  //   .then(tasks => { this.setState({ tasks })
+  //   });
+  // };
+
+
+getUser = (userName) => {
+  return LoginManager.get("user", userName)
+}
+
   render() {
     return (
       <React.Fragment>
+        <Route exact path="/" component={Welcome}/>
+        <Route exact path="/home" render={props => {
+          console.log(this.state.messages)
+          console.log(this.state.tasks)
+            return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
+              events={this.state.events} />)
+
+          }}/>
+        <Route
+          exact path="/register" render={props => {
+            return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
+          }}
+        />
+        <Route exact path="/login" component={Login} />
         <Route
           path="/events"
           render={props => {
@@ -76,7 +164,6 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's events
           }}
         />
-
         <Route
           exact
           path="/articles"
@@ -107,44 +194,90 @@ export default class ApplicationViews extends Component {
           path="/articles/new"
           render={props => {
             return <ArticleForm {...props} addArticle={this.addArticle} />;
-          }}
-        />
-
-        <Route
-          path="/friends"
-          render={props => {
-            return null;
+          // path="/friends"
+          // render={props => {
+          //   return null;
             // Remove null and return the component which will show list of friends
           }}
         />
-
         <Route
+          // path="/friends"
+          // render={props => {
+          //   return null;
+            // Remove null and return the component which will show list of friends
+          exact
           path="/messages"
           render={props => {
-            return null;
-            // Remove null and return the component which will show the messages
+            if (this.isAuthenticated()) {
+              return (
+                <MessageList
+                  {...props}
+                  deleteMessage={this.deleteMessage}
+                  messages={this.state.messages}
+                />
+              )
+            } else {
+              return <Redirect to="/login" />;
+            }
           }}
         />
-
+        {/* <MessageList messages={this.state.messages} />; */}
+        {/* Our shiny new route. We pass employees to the AnimalForm so a
+        dropdown can be populated */}
         <Route
-          path="/tasks"
+          exact
+          path="/messages/new"
+          render={props => {
+            return (
+              <MessageForm
+                {...props}
+                addMessage={this.addMessage}
+                // employees={this.state.employees}
+              />
+            )
+          }}
+        />
+        <Route exact
+          path="/messages/:messageId(\d+)"
+          render={props => {
+            // Find the message with the id of the route parameter
+            let message = this.state.messages.find(
+              message => message.id === parseInt(props.match.params.messageId)
+            )
+
+            // If the message wasn't found, create a default one
+            if (!message) {
+              message = { id: 404, name: "404", message: "Message not found" };
+            }
+            return (
+              <MessageDetail message={message} deleteMessage={this.deleteMessage} />
+            )
+          }}
+        />
+        <Route
+          exact path="/tasks"
           render={props => {
             if (this.isAuthenticated()) {
               return (
                 <TaskList
                   {...props}
                   tasks={this.state.tasks}
+                  // getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
                 />
-              );
+              )
             } else {
-              return <Redirect to="/login" />;
-            }
-          }}
-        />
+                return <Redirect to="/" />
+               }
+          }} />
 
-        <Route path="/login" component={Login} />
+        <Route path="/tasks/new" render={(props) => {
+            return <TaskForm {...props} addTask={this.addTask}/>
+        }} />
+
       </React.Fragment>
-    );
-  }
-}
+    )
+        }
+      }
+export default withRouter(ApplicationViews);
+

@@ -6,7 +6,7 @@ export default {
 
     },
     all (resource) {
-            return fetch(`${remoteURL}/${resource}`).then(e => e.json())
+            return fetch(`${remoteURL}/${resource}`).then(data => data.json())
         },
 
     post (resource, resourceObj) {
