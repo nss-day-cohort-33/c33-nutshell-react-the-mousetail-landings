@@ -3,7 +3,28 @@
     {
       "id": 1,
       "username": "Steve",
+<<<<<<< HEAD
       "password": "123"
+=======
+      "email": "me@me.com"
+    },
+    {
+      "username": "jeff",
+      "password": "jeff",
+      "id": 2
+    },
+    {
+      "username": "walter",
+      "password": "walter",
+      "id": 3
+    }
+  ],
+  "messages": [
+    {
+      "message": "Hi there",
+      "userId": 2,
+      "id": 1
+>>>>>>> 0831a84d036f63159eba6bde73da6b6c931e12a5
     },
     {
       "username": "jeff",
@@ -49,6 +70,7 @@
   "messages": [
     {
       "id": 1,
+<<<<<<< HEAD
       "userId": 1,
       "message": "What's up?"
     }
@@ -110,6 +132,21 @@
       "time": "3pm",
       "userId": null,
       "id": 9
+=======
+      "userId": 2,
+      "title": "Jordan's Birthday Dinner",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Dinner Part",
+      "location": "Our House",
+      "date": "2019-08-07",
+      "time": "21:00"
+>>>>>>> 0831a84d036f63159eba6bde73da6b6c931e12a5
     }
   ],
   "friends": [
@@ -122,10 +159,73 @@
   "tasks": [
     {
       "id": 1,
-      "userId": 3,
+      "userId": 2,
       "name": "Take out garbage",
       "completionDate": "2019-05-07",
       "completed": false
+    },
+    {
+      "name": "Get this to work",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "name": "Get userId to show in database",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "name": "Get UserId to store in database",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "name": "HOw about now",
+      "completionDate": "2019-07-24",
+      "completed": false,
+      "userId": 2,
+      "id": 9
+    },
+    {
+      "name": "mo is the mo",
+      "completionDate": "2019-01-01",
+      "completed": false,
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "name": "sldkfj",
+      "completionDate": "2019-01-01",
+      "completed": false,
+      "userId": 2,
+      "id": 11
+    },
+    {
+      "name": "Will this display?",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "name": "Walter's first task",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": null,
+      "id": 13
+    },
+    {
+      "name": "Walter's second task",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": null,
+      "id": 14
     }
   ]
 }

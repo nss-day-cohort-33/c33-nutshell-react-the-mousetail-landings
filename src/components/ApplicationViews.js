@@ -8,7 +8,10 @@ import MessageManager from "./modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
+import TaskForm from "./task/TaskForm"
 import HomeList from "./home/HomeList"
+import ArticleList from "./article/ArticleList"
+import EventForm from "./event/EventForm"
 import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageDetail from "./message/MessageDetail"
@@ -26,23 +29,21 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  isAuthenticated = () => sessionStorage.getItem("userId") !== null
-
+  // getUserTasks = () => {
+  //   TaskManager.getAll(sessionStorage.getItem("userId"))
+  //     .then(user_tasks => this.setState({tasks: user_tasks}))
+  // }
   componentDidMount() {
     const newState = {}
-
-    ArticleManager.getAll("articles").then(
-      articles => (newState.articles = articles)
-    );
-    EventManager.getAll("events").then(
-    events => (newState.events = events)
-    );
-    MessageManager.getAll("messages").then(
-      messages => (newState.messages = messages)
-    );
-    TaskManager.getAll("tasks")
-      .then(tasks => (newState.tasks = tasks))
-      .then(() => this.setState(newState));
+  ArticleManager.getAll("articles")
+  .then(articles => (newState.articles = articles))
+  .then(() =>  MessageManager.getAll("messages") )
+  .then(messages => (newState.messages = messages))
+  // .then(() => TaskManager.getAll("tasks") )
+  // .then(tasks => (newState.tasks = tasks))
+  .then(() => EventManager.getAll("events") )
+  .then(events => (newState.events = events))
+  .then(() => this.setState(newState))
   }
 
   addEvent = (thing) => {
@@ -54,6 +55,8 @@ class ApplicationViews extends Component {
       })
   );
 }
+
+isAuthenticated = () => sessionStorage.getItem("userId") !== null;
 
 deleteEvent = (id) => {
   return EventManager.removeAndList("events", id)
@@ -104,6 +107,12 @@ deleteEvent = (id) => {
       });
   };
 
+  // completeTask = (completedTaskObject) => {
+  //   return TaskManager.put("tasks", completedTaskObject)
+  //   .then(() => TaskManager.getTaskByUserID(userId))
+  //   .then(tasks => { this.setState({ tasks })
+  //   });
+  // };
 
 
 getUser = (userName) => {
@@ -115,7 +124,10 @@ getUser = (userName) => {
       <React.Fragment>
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/home" render={props => {
-          return ( <HomeList  {...props} tasks={this.state.tasks} deleteTask={this.deleteTask} events={this.state.events}/>)
+          console.log(this.state.messages)
+          console.log(this.state.tasks)
+            return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
+              events={this.state.events} />)
           }}/>
 
         <Route
@@ -188,22 +200,27 @@ getUser = (userName) => {
           }}
         />
         <Route
-          path="/tasks"
+          exact path="/tasks"
           render={props => {
             if (this.isAuthenticated()) {
               return (
                 <TaskList
                   {...props}
                   tasks={this.state.tasks}
+                  // getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
                 />
               )
             } else {
-              return <Redirect to="/" />;
-            }
-          }}
-        />
-        <Route path="/login" component={Login} />
+                return <Redirect to="/" />
+               }
+          }} />
+
+        <Route path="/tasks/new" render={(props) => {
+            return <TaskForm {...props} addTask={this.addTask}/>
+        }} />
+
+
       </React.Fragment>
     )
         }

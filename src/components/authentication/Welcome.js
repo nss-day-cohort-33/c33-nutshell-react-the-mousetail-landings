@@ -4,7 +4,6 @@ import {withRouter} from 'react-router-dom'
 
  class Welcome extends Component {
 
-//form of the form
     render() {
         return (
             <form>

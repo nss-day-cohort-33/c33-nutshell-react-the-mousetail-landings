@@ -1,11 +1,21 @@
 import React, { Component } from "react";
+import TaskManager from "../modules/TaskManager"
 
 export default class HomeList extends Component {
+  state={
+    tasks: []
+}
+
+componentDidMount() {
+    let userId = sessionStorage.getItem("userId")
+    TaskManager.getTaskByUserID(userId).then(tasks => {this.setState({ tasks })})
+    }
+
   render() {
     return (
       <React.Fragment>
         <section className="tasks">
-          {this.props.tasks.map(task => (
+          {this.state.tasks.map(task => (
             <div key={task.id} className="card">
               <div className="card-body">
                 <div className="card-title">
@@ -17,27 +27,36 @@ export default class HomeList extends Component {
           ))}
         </section>
         <section className="events">
-                {this.props.events.map(each =>
-                    <div key={each.id} className="event-card">
-                        <div className="event-card-body">
-                            <div className="event-card-title">
-                                {/* <img src={dog} className="icon--dog" /> */}
-                                <h5>{each.title}</h5>
-                                <h6>{each.date}</h6>
-                                <p>{each.time}</p>
-                                <h6>{each.location}</h6>
-                                <button
-                                    onClick={() => this.props.deleteEvent(each.id)}
-                                    className="event-card-link">Delete</button>
-                                    <button
-                                    onClick={() => this.props.editEvent(each.id)}
-                                    className="event-card-link">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-            </section>
+          {this.props.events.map(each =>
+            <div key={each.id} className="event-card">
+              <div className="event-card-body">
+                <div className="event-card-title">
+                  <h5>{each.title}</h5>
+                    <h6>{each.date}</h6>
+                      <p>{each.time}</p>
+                        <h6>{each.location}</h6>
+                         <button
+                           onClick={() => this.props.deleteEvent(each.id)}
+                          className="event-card-link">Delete</button>
+                         <button
+                           onClick={() => this.props.editEvent(each.id)}
+                           className="event-card-link">Edit</button>
+               </div>
+              </div>
+            </div>
+          )}
+        </section>
+        <section className="messages">
+          {this.props.messages.map(message => (
+            <div key={message.id} className="card">
+              <div className="card-body">
+                <div className="card-title">
+                  <h5>{message.message}</h5>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
       </React.Fragment>
     );
   }
