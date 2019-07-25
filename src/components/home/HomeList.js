@@ -41,7 +41,7 @@ componentDidMount() {
                            onClick={() => this.props.deleteEvent(each.id)}
                           className="event-card-link">Delete</button>
                          <button
-                           onClick={() => this.props.editEvent(each.id)}
+                           onClick={() => this.props.history.push(`/events/${each.id}/edit`)}
                            className="event-card-link">Edit</button>
                </div>
               </div>

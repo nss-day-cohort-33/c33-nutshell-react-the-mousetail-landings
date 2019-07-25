@@ -67,7 +67,7 @@ isAuthenticated = () => sessionStorage.getItem("userId") !== null;
 deleteEvent = (id) => {
   return EventManager.removeAndList("events", id)
     .then( eventsData => {
-      this.props.history.push("/home")
+      this.props.history.push("/events")
       this.setState({
         events: eventsData})
       })
@@ -77,6 +77,7 @@ deleteEvent = (id) => {
     return EventManager.put("events", eventToEdit)
       .then(() => EventManager.get("events", sessionStorage.getItem("userId")))
       .then(events => {
+        this.props.history.push("/events")
         this.setState({
           events: events
         })
@@ -143,7 +144,7 @@ getUser = (userName) => {
           console.log(this.state.messages)
           console.log(this.state.tasks)
             return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
-              events={this.state.events} deleteEvent={this.deleteEvent} />)
+              events={this.state.events} deleteEvent={this.deleteEvent} editForm={this.editForm} />)
           }}/>
 
         <Route
@@ -153,7 +154,7 @@ getUser = (userName) => {
           />
         <Route path="/login" component={Login}/>
         
-        <Route path="/events" render={(props) => {
+        <Route exact path="/events" render={(props) => {
           if(this.isAuthenticated()) {
             return <EventForm {...props} addEvent={this.addEvent} deleteEvent={this.deleteEvent} events={this.state.events} />
           } else {
@@ -165,6 +166,7 @@ getUser = (userName) => {
             return <EventEditForm {...props} editForm={this.editForm} />
           }}
         />
+
 
         <Route
           path="/friends" render={props => {
