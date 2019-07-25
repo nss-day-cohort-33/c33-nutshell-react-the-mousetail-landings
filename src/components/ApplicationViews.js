@@ -27,18 +27,10 @@ class ApplicationViews extends Component {
   };
 
   isAuthenticated = () => sessionStorage.getItem("userId") !== null
-  // onLogin = () => {
-  //   this.setState({
-  //     userId: sessionStorage.getItem("userID")
-  //   })
-  //   this.loadAllData(this.state.userId)
-  // }
-  // componentDidMount() {
-  //     let currentUserId = sessionStorage.getItem("userID")
-  //     this.loadAllData(currentUserId)}
-  // loadAllData = (currentUserId) => {
+
+  componentDidMount() {
     const newState = {}
-  
+
     ArticleManager.getAll("articles").then(
       articles => (newState.articles = articles)
     );
@@ -54,10 +46,8 @@ class ApplicationViews extends Component {
   }
 
   addEvent = (thing) => {
-    //the part about "sessionStorage" is copied from Alex's group project
-    //it probably needs editing and some break down becasue I do not fully understand it
-  return EventManager.post("events", thing)
-      .then(() => EventManager.getAll("events", sessionStorage.getItem("userId")))
+  return EventManager.post(thing)
+      .then(() => EventManager.getAll(thing))
       .then(eventData =>
           this.setState({
             events: eventData 

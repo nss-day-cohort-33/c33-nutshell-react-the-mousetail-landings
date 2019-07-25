@@ -18,7 +18,7 @@ export default class HomeList extends Component {
         </section>
         <section className="events">
                 {this.props.events.map(each =>
-                    <div key={each.username} className="event-card">
+                    <div key={each.id} className="event-card">
                         <div className="event-card-body">
                             <div className="event-card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}

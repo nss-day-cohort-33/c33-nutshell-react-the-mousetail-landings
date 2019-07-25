@@ -5,8 +5,8 @@ export default {
             return fetch(`${remoteURL}/${resource}/${id}`).then(e => e.json())
 
     },
-    all (resource, id) {
-            return fetch(`${remoteURL}/${resource}?userId=${id}`).then(e => e.json())
+    all (resource) {
+            return fetch(`${remoteURL}/${resource}`).then(e => e.json())
         },
 
     post (resource, resourceObj) {
