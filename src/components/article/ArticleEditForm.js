@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ArticleManager from "../modules/ArticleManager";
+import "./Article.css"
 
 export default class ArticleEditForm extends Component {
   // Set initial state

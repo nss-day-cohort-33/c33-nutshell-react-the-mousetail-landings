@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./Article.css"
 
 
 export default class ArticleCard extends Component {
@@ -12,9 +13,9 @@ export default class ArticleCard extends Component {
             <h5>{this.props.article.title}</h5>
             <h5>{this.props.article.url}</h5>
             <h5>{this.props.article.synopsis}</h5>
-            <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
+            {/* <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
               Details
-            </Link>
+            </Link> */}
             <button
               type="button"
               className="btn btn-success"

@@ -30,36 +30,36 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  // getUserTasks = () => {
-  //   TaskManager.getAll(sessionStorage.getItem("userId"))
-  //     .then(user_tasks => this.setState({tasks: user_tasks}))
-  // }
-  componentDidMount() {
-    const newState = {};
-
-    ArticleManager.getAll("articles")
-  //     .then(articles => (newState.articles = articles))
-  //     .then(
-  //       TaskManager.getAll("tasks")
-  //         .then(tasks => (newState.tasks = tasks))
-  //         .then(() => this.setState(newState))
-  //     );
-  // }
-
-  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
-    .then(articles => (newState.articles = articles))
-    .then(() =>  MessageManager.getAll("messages") )
-    .then(messages => (newState.messages = messages))
-    // .then(() => TaskManager.getAll("tasks") )
-    // .then(tasks => (newState.tasks = tasks))
-
-    // .then(() => EventManager.getAll("events") )
-    // .then(events => (newState.events = events));
-    .then(() => this.setState(newState))
-
-
-
+  getUserArticles = () => {
+    ArticleManager.getAll(parseInt(sessionStorage.getItem("userId")))
+      .then(userArticles => this.setState({articles: userArticles}))
   }
+  // componentDidMount() {
+  //   const newState = {};
+
+  //   ArticleManager.getAll("articles")
+  // //     .then(articles => (newState.articles = articles))
+  // //     .then(
+  // //       TaskManager.getAll("tasks")
+  // //         .then(tasks => (newState.tasks = tasks))
+  // //         .then(() => this.setState(newState))
+  // //     );
+  // // }
+
+  // // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  //   .then(articles => (newState.articles = articles))
+  //   .then(() =>  MessageManager.getAll("messages") )
+  //   .then(messages => (newState.messages = messages))
+  //   // .then(() => TaskManager.getAll("tasks") )
+  //   // .then(tasks => (newState.tasks = tasks))
+
+  //   // .then(() => EventManager.getAll("events") )
+  //   // .then(events => (newState.events = events));
+  //   .then(() => this.setState(newState))
+
+
+
+  // }
 
   // Check if credentials are in local storage; isAuthenticated is a method
   // will return true or false
@@ -172,7 +172,8 @@ getUser = (userName) => {
               return (
                 <ArticleList
                   {...props}
-                  articles={this.state.articles}
+                  // articles={this.state.articles}
+                  // getUserArticles={this.getUserArticles}
                   deleteArticle={this.deleteArticle}
                 />
               );

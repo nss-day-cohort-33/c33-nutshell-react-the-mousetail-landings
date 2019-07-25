@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./Article.css"
+
 
 export default class ArticleForm extends Component {
   // Set initial state
@@ -15,7 +17,7 @@ export default class ArticleForm extends Component {
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
-  
+
   constructNewArticle = evt => {
     evt.preventDefault();
     if (this.state.title === "") {
@@ -25,7 +27,7 @@ export default class ArticleForm extends Component {
         title: this.state.title,
         url: this.state.url,
         synopsis: this.state.synopsis,
-        userId: parseInt(this.state.userId)
+        userId: parseInt(sessionStorage.getItem("userId"))
       };
 
       // Create the article and redirect user to article list
