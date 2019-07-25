@@ -4,14 +4,11 @@ import { withRouter } from "react-router";
 import ArticleManager from "./modules/ArticleManager";
 import ArticleEditForm from "./article/ArticleEditForm";
 import ArticleList from "./article/ArticleList";
-import ArticleForm from "./article/ArticleForm"
-
-// import ArticleManager from "../modules/ArticleManager"
-// import EventManager from "../modules/EventManager"
-// import MessageManager from "../modules/MessageManager"
+import ArticleForm from "./article/ArticleForm";
 import TaskManager from "./modules/TaskManager";
 import TaskList from "./task/TaskList";
 import Login from "./authentication/Login";
+import APImanager from "./modules/APImanager";
 
 export default class ApplicationViews extends Component {
   state = {
@@ -56,13 +53,19 @@ export default class ApplicationViews extends Component {
       });
   };
   addArticle = article =>
-  ArticleManager.post("articles", article)
-    .then(() => ArticleManager.getAll("articles"))
-    .then(articles =>
-      this.setState({
-        articles: articles
-      })
-    );
+    ArticleManager.post("articles", article)
+      .then(() => ArticleManager.getAll("articles"))
+      .then(articles =>
+        this.setState({
+          articles: articles
+        })
+      );
+  deleteArticle = article => {
+    ArticleManager.removeAndList("articles", article)
+      .then(articles => {
+        this.setState({ articles: articles });
+      });
+  };
   render() {
     return (
       <React.Fragment>

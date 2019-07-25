@@ -11,6 +11,7 @@ export default class ArticleCard extends Component {
             {/* <img src={dog} className="icon--dog" alt="dog"/> */}
             <h5>{this.props.article.title}</h5>
             <h5>{this.props.article.url}</h5>
+            <h5>{this.props.article.synopsis}</h5>
             <Link className="nav-link" to={`/articles/${this.props.article.id}`}>
               Details
             </Link>
@@ -29,7 +30,7 @@ export default class ArticleCard extends Component {
               href="#"
               onClick={() => this.props.deleteArticle(this.props.article.id)}
               className="card-link"
-            >
+             >
               DELETE
             </a>
           </div>

@@ -15,23 +15,16 @@
   ],
   "articles": [
     {
-      "id": 1,
-      "title": "Wormholes Allow Information to Escape Black Holes in time ttt",
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/ when is this tttt",
-      "synopsis": "Check out this recent discovery about wormholesttt",
-      "userId": 1
-    },
-    {
       "id": 2,
-      "title": "Wormholes Allow Information to Escape Black Holes in time ttt",
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/ when is this tttt",
-      "synopsis": "Check out this recent discovery about wormholesttt",
-      "userId": 1
+      "title": "This should be a new arty",
+      "url": "Url for the wprls ti watfh itselg this is it",
+      "synopsis": "about nothing and everything at once",
+      "userId": null
     },
     {
-      "title": "This should be a new arty new way",
-      "url": "Thus url is niuce",
-      "synopsis": "about nothing and everything at once",
+      "title": "Article about articles when the article is an article",
+      "url": "This url is a url about how to url a url",
+      "synopsis": "Synopsis is a strange word derived from idk where",
       "userId": null,
       "id": 3
     }
@@ -53,13 +46,5 @@
       "otherFriendId": 3
     }
   ],
-  "tasks": [
-    {
-      "id": 1,
-      "userId": 3,
-      "name": "Take out garbage",
-      "completionDate": "2019-05-07",
-      "completed": false
-    }
-  ]
+  "tasks": []
 }
