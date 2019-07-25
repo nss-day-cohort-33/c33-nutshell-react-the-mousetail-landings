@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import "./Event.css"
+import EventManager from '../modules/EventManager';
 
+let userId = sessionStorage.getItem("userId")
 export default class EventForm extends Component {
     state = {
         title: "",
         location: "",
         date: "",
         time: "",
-        userId: ""
+        userId: userId
       }
 
       handleFieldChange = evt => {
@@ -23,14 +25,12 @@ export default class EventForm extends Component {
             location: this.state.location,
             date: this.state.date,
             time: this.state.time,
-            userId: Number(sessionStorage.getItem("userId"))
+            userId: this.state.userId
           };
         this.props
             .addEvent(newEvent)
             .then(() => this.props.history.push("/events"));
     }
-
-          
           render() {
               return (
                   <React.Fragment>
@@ -55,7 +55,7 @@ export default class EventForm extends Component {
             </form>
             <section className="events">
                 {this.props.events.map(each =>
-                    <div key={each.username} className="event-card">
+                    <div key={each.id} className="event-card">
                         <div className="event-card-body">
                             <div className="event-card-title">
                                 {/* <img src={dog} className="icon--dog" /> */}

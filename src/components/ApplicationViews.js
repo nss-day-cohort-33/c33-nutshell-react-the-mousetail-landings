@@ -28,26 +28,32 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  // getUserTasks = () => {
-  //   TaskManager.getAll(sessionStorage.getItem("userId"))
-  //     .then(user_tasks => this.setState({tasks: user_tasks}))
-  // }
+  getUserTasks = () => {
+    TaskManager.getAll(sessionStorage.getItem("userId"))
+    .then(user_tasks => this.setState({tasks: user_tasks}))
+  }
+
+  getUserEvents = () => {
+    EventManager.getAll(sessionStorage.getItem("uderId"))
+    .then(user_events => this.setState({events: user_events}))
+  }
+
   componentDidMount() {
     const newState = {}
   ArticleManager.getAll("articles")
   .then(articles => (newState.articles = articles))
   .then(() =>  MessageManager.getAll("messages") )
   .then(messages => (newState.messages = messages))
-  // .then(() => TaskManager.getAll("tasks") )
-  // .then(tasks => (newState.tasks = tasks))
+  .then(() => TaskManager.getAll("tasks") )
+  .then(tasks => (newState.tasks = tasks))
   .then(() => EventManager.getAll("events") )
   .then(events => (newState.events = events))
   .then(() => this.setState(newState))
   }
 
-  addEvent = (thing) => {
-  return EventManager.post(thing)
-      .then(() => EventManager.getAll(thing))
+  addEvent = (eventObj) => {
+  return EventManager.post("events", eventObj)
+      .then(() => EventManager.getAll("events"))
       .then(eventData =>
           this.setState({
             events: eventData 
