@@ -18,6 +18,8 @@ import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
 import Register from "./authentication/Register"
 
+let currentUserId = parseInt(sessionStorage.getItem("userId"))
+
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -29,7 +31,7 @@ class ApplicationViews extends Component {
   };
 
   getUserTasks = () => {
-    TaskManager.getAll("tasks", sessionStorage.getItem("userId"))
+    return TaskManager.getTaskByUserID(currentUserId)
       .then(user_tasks => this.setState({tasks: user_tasks}))
 
   }
@@ -93,6 +95,17 @@ class ApplicationViews extends Component {
           messages: messages
         });
       });
+  };
+
+  updateTask = (editedTaskObject) => {
+    return TaskManager.put("tasks", editedTaskObject)
+    .then(() => this.getUserTasks())
+    // .then(tasks => {
+    //   console.log(tasks)
+    //   this.setState({
+    //     tasks: tasks
+    //   })
+    // });
   };
 
   // completeTask = (completedTaskObject) => {
@@ -203,6 +216,7 @@ getUser = (userName) => {
                   tasks={this.state.tasks}
                   getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
+                  updateTask={this.updateTask}
                 />
               )
             } else {

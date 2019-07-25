@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "Steve",
-      "email": "me@me.com"
+      "password": "me@me.com"
     },
     {
       "username": "jeff",
@@ -87,35 +87,35 @@
     {
       "name": "Get userId to show in database",
       "completionDate": "2019-07-24",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 3
     },
     {
       "name": "Get UserId to store in database",
       "completionDate": "2019-07-24",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 7
     },
     {
       "name": "HOw about now",
       "completionDate": "2019-07-24",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 9
     },
     {
       "name": "mo is the mo",
       "completionDate": "2019-01-01",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 10
     },
     {
       "name": "sldkfj",
       "completionDate": "2019-01-01",
-      "completed": false,
+      "completed": true,
       "userId": 2,
       "id": 11
     },
@@ -127,25 +127,11 @@
       "id": 12
     },
     {
-      "name": "Walter's first task",
-      "completionDate": "2019-07-25",
-      "completed": false,
-      "userId": null,
-      "id": 13
-    },
-    {
-      "name": "Walter's second task",
-      "completionDate": "2019-07-25",
-      "completed": false,
-      "userId": null,
-      "id": 14
-    },
-    {
-      "name": "Got tasks by userId",
-      "completionDate": "2019-07-25",
+      "name": "Got the checkbox to mark a task complete",
+      "completionDate": "2019-07-23",
       "completed": false,
       "userId": 2,
-      "id": 15
+      "id": 13
     }
   ]
 }
