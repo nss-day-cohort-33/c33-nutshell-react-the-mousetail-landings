@@ -3,9 +3,7 @@
     {
       "id": 1,
       "username": "Steve",
-<<<<<<< HEAD
       "password": "123"
-=======
       "email": "me@me.com"
     },
     {
@@ -24,7 +22,6 @@
       "message": "Hi there",
       "userId": 2,
       "id": 1
->>>>>>> 0831a84d036f63159eba6bde73da6b6c931e12a5
     },
     {
       "username": "jeff",
@@ -65,14 +62,6 @@
       "username": "james",
       "password": "james",
       "id": 9
-    }
-  ],
-  "messages": [
-    {
-      "id": 1,
-<<<<<<< HEAD
-      "userId": 1,
-      "message": "What's up?"
     }
   ],
   "articles": [
@@ -126,27 +115,12 @@
       "id": 8
     },
     {
-      "title": "Walk Adam",
-      "location": "neighborhood",
-      "date": "1212-12-12",
-      "time": "3pm",
-      "userId": null,
-      "id": 9
-=======
-      "userId": 2,
-      "title": "Jordan's Birthday Dinner",
-      "location": "Our House",
-      "date": "2019-08-07",
-      "time": "21:00"
-    },
-    {
       "id": 2,
       "userId": 2,
-      "title": "Dinner Part",
+      "title": "Dinner Party",
       "location": "Our House",
       "date": "2019-08-07",
       "time": "21:00"
->>>>>>> 0831a84d036f63159eba6bde73da6b6c931e12a5
     }
   ],
   "friends": [
