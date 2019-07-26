@@ -5,7 +5,8 @@ import EventManager from "../modules/EventManager"
 export default class HomeList extends Component {
   state={
     tasks: [],
-    events: []
+    events: [],
+    articles: []
 }
 
 componentDidMount() {
@@ -54,6 +55,18 @@ componentDidMount() {
               <div className="card-body">
                 <div className="card-title">
                   <h5>{message.message}</h5>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+        <section className="articles">
+          {this.props.articles.map(article => (
+            <div key={article.id} className="card">
+              <div className="card-body">
+                <div className="card-title">
+                  <h5>{this.props.article.name}</h5>
+                  <h5>{article.completionDate}</h5>
                 </div>
               </div>
             </div>

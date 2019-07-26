@@ -1,0 +1,36 @@
+.articles {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icon--article {
+    width: 75px;
+    height: 75px;
+}
+
+.card {
+    /* display: inline; */
+    width: 100rem;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* flex-direction: column; */
+}
+
+.card-link {
+    margin: 12px 0 0 0;
+    font-size: 0.7em;
+}
+
+.ArticleList {
+    font-size: 0.75em;
+}
+
+.articleButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+  }

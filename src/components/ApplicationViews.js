@@ -1,7 +1,6 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import ArticleManager from "./modules/ArticleManager"
 import EventManager from "./modules/EventManager"
 import EventForm from "./event/EventForm"
 import MessageManager from "./modules/MessageManager"
@@ -10,13 +9,16 @@ import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
 import TaskForm from "./task/TaskForm"
 import HomeList from "./home/HomeList"
-import ArticleList from "./article/ArticleList"
 import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageDetail from "./message/MessageDetail"
 import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
 import Register from "./authentication/Register"
+import ArticleManager from "./modules/ArticleManager";
+import ArticleEditForm from "./article/ArticleEditForm";
+import ArticleList from "./article/ArticleList";
+import ArticleForm from "./article/ArticleForm";
 
 class ApplicationViews extends Component {
   state = {
@@ -66,6 +68,26 @@ deleteEvent = (id) => {
       })
   }
   
+  getUserArticles = () => {
+    ArticleManager.getAll(parseInt(sessionStorage.getItem("userId"))).then(
+      userArticles => this.setState({ articles: userArticles })
+    );
+  };
+  // componentDidMount() {
+  //   const newState = {};
+
+  //   ArticleManager.getAll("articles")
+  // //     .then(articles => (newState.articles = articles))
+  // //     .then(
+  // //       TaskManager.getAll("tasks")
+  // //         .then(tasks => (newState.tasks = tasks))
+  // //         .then(() => this.setState(newState))
+  // //     );
+  // // }
+
+
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null;
+
   deleteMessage = id => {
     return fetch(`http://localhost:5002/messages/${id}`, {
       method: "DELETE"
@@ -85,6 +107,28 @@ deleteEvent = (id) => {
           tasks: tasks
         })
       );
+  };
+  updateArticle = (resourse, editedArticleObject) => {
+    return ArticleManager.put(resourse, editedArticleObject)
+      .then(() => ArticleManager.getAll(resourse))
+      .then(articles => {
+        this.setState({
+          articles: articles
+        });
+      });
+  };
+  addArticle = article =>
+    ArticleManager.post("articles", article)
+      .then(() => ArticleManager.getAll("articles"))
+      .then(articles =>
+        this.setState({
+          articles: articles
+        })
+      );
+  deleteArticle = article => {
+    ArticleManager.removeAndList("articles", article).then(articles => {
+      this.setState({ articles: articles });
+    });
   };
 
   addMessage = message =>
@@ -113,10 +157,9 @@ deleteEvent = (id) => {
   //   });
   // };
 
-
-getUser = (userName) => {
-  return LoginManager.get("user", userName)
-}
+  getUser = userName => {
+    return LoginManager.get("user", userName);
+  };
 
   render() {
     return (
@@ -130,8 +173,33 @@ getUser = (userName) => {
           }}/>
 
         <Route
-          exact path="/register" render={props => {
-            return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
+          exact
+          path="/home"
+          render={props => {
+            console.log(this.state.messages);
+            console.log(this.state.tasks);
+            return (
+              <HomeList
+                {...props}
+                tasks={this.state.tasks}
+                getUserArticles={this.getUserArticles}
+                messages={this.state.messages}
+                events={this.state.events}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/register"
+          render={props => {
+            return (
+              <Register
+                {...props}
+                users={this.state.users}
+                addNewUser={this.addNewUser}
+              />
+            );
           }}
           />
         <Route path="/login" component={Login}/>
@@ -146,10 +214,50 @@ getUser = (userName) => {
         <Route
           path="/friends" render={props => {
             return null
+          }}
+        />
+        <Route
+          exact
+          path="/articles"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <ArticleList
+                  {...props}
+                  // articles={this.state.articles}
+                  getUserArticles={this.getUserArticles}
+                  deleteArticle={this.deleteArticle}
+                />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
+
+        <Route
+          path="/articles/:articleId(\d+)/edit"
+          render={props => {
+            return (
+              <ArticleEditForm {...props} updateArticle={this.updateArticle} />
+            );
+          }}
+        />
+        <Route
+          path="/articles/new"
+          render={props => {
+            return <ArticleForm {...props} addArticle={this.addArticle} />;
+            // path="/friends"
+            // render={props => {
+            //   return null;
             // Remove null and return the component which will show list of friends
           }}
         />
         <Route
+          // path="/friends"
+          // render={props => {
+          //   return null;
+          // Remove null and return the component which will show list of friends
           exact
           path="/messages"
           render={props => {
@@ -160,7 +268,7 @@ getUser = (userName) => {
                   deleteMessage={this.deleteMessage}
                   messages={this.state.messages}
                 />
-              )
+              );
             } else {
               return <Redirect to="/login" />;
             }
@@ -179,28 +287,33 @@ getUser = (userName) => {
                 addMessage={this.addMessage}
                 // employees={this.state.employees}
               />
-            )
+            );
           }}
         />
-        <Route exact
+        <Route
+          exact
           path="/messages/:messageId(\d+)"
           render={props => {
             // Find the message with the id of the route parameter
             let message = this.state.messages.find(
               message => message.id === parseInt(props.match.params.messageId)
-            )
+            );
 
             // If the message wasn't found, create a default one
             if (!message) {
               message = { id: 404, name: "404", message: "Message not found" };
             }
             return (
-              <MessageDetail message={message} deleteMessage={this.deleteMessage} />
-            )
+              <MessageDetail
+                message={message}
+                deleteMessage={this.deleteMessage}
+              />
+            );
           }}
         />
         <Route
-          exact path="/tasks"
+          exact
+          path="/tasks"
           render={props => {
             if (this.isAuthenticated()) {
               return (
@@ -210,20 +323,21 @@ getUser = (userName) => {
                   // getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
                 />
-              )
+              );
             } else {
-                return <Redirect to="/" />
-               }
-          }} />
+              return <Redirect to="/" />;
+            }
+          }}
+        />
 
-        <Route path="/tasks/new" render={(props) => {
-            return <TaskForm {...props} addTask={this.addTask}/>
-        }} />
-
-
+        <Route
+          path="/tasks/new"
+          render={props => {
+            return <TaskForm {...props} addTask={this.addTask} />;
+          }}
+        />
       </React.Fragment>
-    )
-        }
-      }
+    );
+  }
+}
 export default withRouter(ApplicationViews);
-
