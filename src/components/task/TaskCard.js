@@ -18,14 +18,16 @@ export default class TaskList extends Component {
           }
 
 render() {
-
     return (
         <div key={this.props.task.id} className="card">
             <div className="card-body">
                 <div className="card-title">
-                    <h5 onClick={() => {
-                            this.props.history.push(`/tasks/${this.props.task.id}/edit`)
-                        }}>Task: {this.props.task.name}</h5>
+                    {/* <input type="hidden"
+                           className="editTaskName"
+                           onChange={this.handleFieldChange}
+                           id={this.props.task.id}
+                           value={this.props.task.name}/> */}
+                    <h5 onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Task: {this.props.task.name}</h5>
                     <h5>Complete By: {this.props.task.completionDate}</h5>
                     <label htmlFor="completed">Check to Complete</label>
                     <input  type="checkbox"
@@ -33,7 +35,7 @@ render() {
                             className="form-control"
                             onClick={this.updateExistingTask}
                             id="completed"/>
-                    <button
+                    {/* <button
                         type="button"
                         className="btn btn-success"
                         onClick={() => {
@@ -41,7 +43,7 @@ render() {
                         }}
                         >
                         Edit
-                        </button>
+                        </button> */}
 
                 </div>
             </div>

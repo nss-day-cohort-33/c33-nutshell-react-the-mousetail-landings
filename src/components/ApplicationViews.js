@@ -8,6 +8,7 @@ import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
 import TaskForm from "./task/TaskForm"
+import TaskEditForm from "./task/TaskEditForm"
 import HomeList from "./home/HomeList"
 import ArticleList from "./article/ArticleList"
 import EventForm from "./event/EventForm"
@@ -224,9 +225,15 @@ getUser = (userName) => {
                }
           }} />
 
-        <Route path="/tasks/new" render={(props) => {
+        <Route exact path="/tasks/new" render={(props) => {
             return <TaskForm {...props} addTask={this.addTask}/>
         }} />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} tasks={this.state.tasks} updateTask={this.updateTask}/>
+          }}
+        />
 
 
       </React.Fragment>
