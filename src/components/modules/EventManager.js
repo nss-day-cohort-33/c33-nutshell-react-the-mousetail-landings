@@ -20,7 +20,11 @@ export default {
 
     put(resource, resourceObjId) {
       return APImanager.put(resource, resourceObjId)
-    }
-
-
+    },
+     
+    getEventByUserID(userId) {
+      return fetch(`http://localhost:5002/events?userId=${userId}&complete=false`)
+      .then ( eventData => eventData.json(),
+      )
+  }
   }

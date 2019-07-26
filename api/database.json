@@ -20,6 +20,21 @@
       "username": "Sampson",
       "password": "111",
       "id": 4
+    },
+    {
+      "username": "jcady17",
+      "password": "melisadumbdumb",
+      "id": 5
+    },
+    {
+      "username": "mjb",
+      "password": "mjb",
+      "id": 6
+    },
+    {
+      "username": "jake",
+      "password": "jake",
+      "id": 7
     }
   ],
   "messages": [
@@ -136,52 +151,20 @@
   ],
   "events": [
     {
-      "title": "Help Mom",
-      "location": "Her House",
-      "date": "2019-12-24",
-      "time": "5pm",
-      "username": null,
-      "id": 4
-    },
-    {
-      "title": "Kids Day Out",
-      "location": "Gymnastics Gym",
-      "date": "2029-07-16",
-      "time": "2:30pm",
-      "username": null,
-      "id": 5
-    },
-    {
-      "title": "Walk Adam",
-      "location": "neighborhood",
-      "date": "2019-08-24",
-      "time": "6pm",
-      "userId": null,
-      "id": 6
-    },
-    {
-      "title": "Help Mom",
-      "location": "home",
-      "date": "7777-07-07",
-      "time": "7",
-      "userId": null,
-      "id": 7
-    },
-    {
-      "title": "Walk Adam",
-      "location": "neighborhood",
-      "date": "1212-12-12",
-      "time": "3pm",
+      "title": "Climb East",
+      "location": "East Nash",
+      "date": "2019-07-27",
+      "time": "3:30pm",
       "userId": null,
       "id": 8
     },
     {
-      "id": 2,
-      "userId": 2,
-      "title": "Dinner Party",
-      "location": "Our House",
-      "date": "2019-08-07",
-      "time": "21:00"
+      "title": "Help Mom",
+      "location": "home",
+      "date": "2019-08-17",
+      "time": "3:45pm",
+      "userId": 6,
+      "id": 9
     }
   ],
   "friends": [
@@ -282,6 +265,20 @@
       "completed": false,
       "userId": 4,
       "id": 17
+    },
+    {
+      "name": "Go to the Meeting",
+      "completionDate": "2019-07-26",
+      "completed": false,
+      "userId": 5,
+      "id": 17
+    },
+    {
+      "name": "merge the thing",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": 6,
+      "id": 18
     }
   ]
 }

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import EventManager from "./modules/EventManager"
 import EventForm from "./event/EventForm"
+import EventEditForm from "./event/EventEditForm"
 import MessageManager from "./modules/MessageManager"
 import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
@@ -30,26 +31,32 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  // getUserTasks = () => {
-  //   TaskManager.getAll(sessionStorage.getItem("userId"))
-  //     .then(user_tasks => this.setState({tasks: user_tasks}))
-  // }
+  getUserTasks = () => {
+    TaskManager.getAll(sessionStorage.getItem("userId"))
+    .then(user_tasks => this.setState({tasks: user_tasks}))
+  }
+
+  getUserEvents = () => {
+    EventManager.getAll(sessionStorage.getItem("uderId"))
+    .then(user_events => this.setState({events: user_events}))
+  }
+
   componentDidMount() {
     const newState = {}
   ArticleManager.getAll("articles")
   .then(articles => (newState.articles = articles))
   .then(() =>  MessageManager.getAll("messages") )
   .then(messages => (newState.messages = messages))
-  // .then(() => TaskManager.getAll("tasks") )
-  // .then(tasks => (newState.tasks = tasks))
+  .then(() => TaskManager.getAll("tasks") )
+  .then(tasks => (newState.tasks = tasks))
   .then(() => EventManager.getAll("events") )
   .then(events => (newState.events = events))
   .then(() => this.setState(newState))
   }
 
-  addEvent = (thing) => {
-  return EventManager.post(thing)
-      .then(() => EventManager.getAll(thing))
+  addEvent = (eventObj) => {
+  return EventManager.post("events", eventObj)
+      .then(() => EventManager.getAll("events"))
       .then(eventData =>
           this.setState({
             events: eventData 
@@ -62,9 +69,20 @@ isAuthenticated = () => sessionStorage.getItem("userId") !== null;
 deleteEvent = (id) => {
   return EventManager.removeAndList("events", id)
     .then( eventsData => {
-      this.props.history.push("/home")
+      this.props.history.push("/events")
       this.setState({
         events: eventsData})
+      })
+  }
+
+  editForm = (eventToEdit) => {
+    return EventManager.put("events", eventToEdit)
+      .then(() => EventManager.get("events", sessionStorage.getItem("userId")))
+      .then(events => {
+        this.props.history.push("/events")
+        this.setState({
+          events: events
+        })
       })
   }
   
@@ -169,7 +187,7 @@ deleteEvent = (id) => {
           console.log(this.state.messages)
           console.log(this.state.tasks)
             return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
-              events={this.state.events} deleteEvent={this.deleteEvent} />)
+              events={this.state.events} deleteEvent={this.deleteEvent} editForm={this.editForm} />)
           }}/>
 
         <Route
@@ -204,12 +222,19 @@ deleteEvent = (id) => {
           />
         <Route path="/login" component={Login}/>
         
-        <Route path="/events" render={(props) => {
+        <Route exact path="/events" render={(props) => {
           if(this.isAuthenticated()) {
             return <EventForm {...props} addEvent={this.addEvent} deleteEvent={this.deleteEvent} events={this.state.events} />
           } else {
             return <Redirect to="/login" /> 
           }}} />
+        
+        <Route
+          path="/events/:eventId(\d+)/edit" render={props => {
+            return <EventEditForm {...props} editForm={this.editForm} />
+          }}
+        />
+
 
         <Route
           path="/friends" render={props => {
