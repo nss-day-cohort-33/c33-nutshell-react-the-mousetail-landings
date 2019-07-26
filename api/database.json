@@ -14,6 +14,11 @@
       "username": "walter",
       "password": "walter",
       "id": 3
+    },
+    {
+      "username": "Sampson",
+      "password": "111",
+      "id": 4
     }
   ],
   "messages": [
@@ -41,9 +46,78 @@
       "message": "What in the Fried Chicken is this?",
       "userId": null,
       "id": 5
+    },
+    {
+      "message": "HELLO, I am a compy named comp",
+      "userId": null,
+      "id": 6
     }
   ],
-  "articles": [],
+  "articles": [
+    {
+      "title": "Wormholes Allow Information to Escape Black Holes in time",
+      "url": "Url about urls that talk about urls",
+      "synopsis": "Synopsis is a very strange word",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "This is a timelint",
+      "url": "this should be a url with a hella sicka cool site mhmm",
+      "synopsis": "but i have no idea what im doing.. when in veitnam",
+      "userId": 2
+    },
+    {
+      "title": "this is new ",
+      "url": "ne",
+      "synopsis": "ne",
+      "userId": null,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "woooooo",
+      "url": "wooooqwiuhf",
+      "synopsis": "woooo",
+      "userId": 2
+    },
+    {
+      "title": "Wormholes Allow Information to Escape Black Holes in time",
+      "url": "Url for the wprls ti watfh itselg",
+      "synopsis": "about nothing and everything at once",
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "title": "This article is about a person",
+      "url": "Whom went to a URL",
+      "synopsis": "and left his soap at home",
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "id": 7,
+      "title": "This be one article",
+      "url": "This be one url",
+      "synopsis": "This be one soap",
+      "userId": 4
+    },
+    {
+      "title": "Wormholes Allow Information to Escape Black Holes in time",
+      "url": "Url for the wprls ti watfh itselg",
+      "synopsis": "about nothing and everything at once",
+      "userId": 4,
+      "id": 8
+    },
+    {
+      "title": "Two of a kind",
+      "url": "is better than",
+      "synopsis": "one of nothing",
+      "userId": 4,
+      "id": 9
+    }
+  ],
   "events": [
     {
       "id": 1,
@@ -55,7 +129,7 @@
     },
     {
       "id": 2,
-      "userId": 2,
+      "userId": 4,
       "title": "Dinner Part",
       "location": "Our House",
       "date": "2019-08-07",
@@ -139,6 +213,27 @@
       "completed": false,
       "userId": null,
       "id": 14
+    },
+    {
+      "name": "GET TO THE CHOPPER",
+      "completionDate": "9999-09-09",
+      "completed": false,
+      "userId": 4,
+      "id": 15
+    },
+    {
+      "name": "GET BACK IN TO THE CHOPPER",
+      "completionDate": "9990-09-09",
+      "completed": false,
+      "userId": 4,
+      "id": 16
+    },
+    {
+      "name": "STEEL THE CHOPPER",
+      "completionDate": "9690-09-09",
+      "completed": false,
+      "userId": 4,
+      "id": 17
     }
   ]
 }

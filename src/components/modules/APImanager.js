@@ -1,38 +1,38 @@
-const remoteURL = "http://localhost:5002"
+const remoteURL = "http://localhost:5002";
 
 export default {
-    get (resource, id) {
-            return fetch(`${remoteURL}/${resource}/${id}`).then(e => e.json())
+  get(resource, id) {
+    return fetch(`${remoteURL}/${resource}/${id}`).then(e => e.json());
+  },
+  all(userId) {
+    return fetch(`${remoteURL}/articles?userId=${userId}`).then(articleData =>
+      articleData.json()
+    );
+  },
 
-    },
-    all (resource) {
-            return fetch(`${remoteURL}/${resource}`).then(data => data.json())
-        },
+  post(resource, resourceObj) {
+    return fetch(`${remoteURL}/${resource}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(resourceObj)
+    }).then(data => data.json());
+  },
 
-    post (resource, resourceObj) {
-            return fetch(`${remoteURL}/${resource}`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify(resourceObj)
-              }).then(data => data.json())
+  delete(resource, id) {
+    return fetch(`${remoteURL}/${resource}/${id}`, {
+      method: "DELETE"
+    });
+  },
 
-        },
-
-    delete(resource, id) {
-            return fetch(`${remoteURL}/${resource}/${id}`, {
-                method: "DELETE"
-                })
-        },
-
-    put(resource, editedObj) {
-            return fetch(`${remoteURL}/${resource}/${editedObj.id}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify(editedObj)
-            }).then(data => data.json());
-          }
-}
+  put(resource, editedObj) {
+    return fetch(`${remoteURL}/${resource}/${editedObj.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedObj)
+    }).then(data => data.json());
+  }
+};
