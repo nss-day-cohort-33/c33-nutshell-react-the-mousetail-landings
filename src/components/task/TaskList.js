@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import "./Task.css"
 import TaskCard from "./TaskCard"
-// import TaskManager from "./modules/TaskManager"
 
 let currentUserId = parseInt(sessionStorage.getItem("userId"))
 

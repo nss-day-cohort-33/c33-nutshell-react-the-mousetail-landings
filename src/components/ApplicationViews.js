@@ -36,23 +36,6 @@ class ApplicationViews extends Component {
       .then(user_tasks => this.setState({tasks: user_tasks}))
 
   }
-  // componentDidMount() {
-  //   const newState = {};
-
-  //   ArticleManager.getAll("articles")
-  //   .then(articles => (newState.articles = articles))
-  //   .then(() =>  MessageManager.getAll("messages") )
-  //   .then(messages => (newState.messages = messages))
-  //   // .then(() => TaskManager.getAll("tasks") )
-  //   // .then(tasks => (newState.tasks = tasks))
-
-  //   // .then(() => EventManager.getAll("events") )
-  //   // .then(events => (newState.events = events));
-  //   .then(() => this.setState(newState))
-
-
-
-  // }
 
   // Check if credentials are in local storage; isAuthenticated is a method
   // will return true or false
@@ -101,21 +84,7 @@ class ApplicationViews extends Component {
   updateTask = (editedTaskObject) => {
     return TaskManager.put("tasks", editedTaskObject)
     .then(() => this.getUserTasks())
-    // .then(tasks => {
-    //   console.log(tasks)
-    //   this.setState({
-    //     tasks: tasks
-    //   })
-    // });
-  };
-
-  // completeTask = (completedTaskObject) => {
-  //   return TaskManager.put("tasks", completedTaskObject)
-  //   .then(() => TaskManager.getTaskByUserID(userId))
-  //   .then(tasks => { this.setState({ tasks })
-  //   });
-  // };
-
+    };
 
 getUser = (userName) => {
   return LoginManager.get("user", userName)

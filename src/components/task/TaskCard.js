@@ -22,11 +22,7 @@ render() {
         <div key={this.props.task.id} className="card">
             <div className="card-body">
                 <div className="card-title">
-                    {/* <input type="hidden"
-                           className="editTaskName"
-                           onChange={this.handleFieldChange}
-                           id={this.props.task.id}
-                           value={this.props.task.name}/> */}
+                    <h6>Click Task Name to Edit</h6>
                     <h5 onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Task: {this.props.task.name}</h5>
                     <h5>Complete By: {this.props.task.completionDate}</h5>
                     <label htmlFor="completed">Check to Complete</label>
@@ -35,16 +31,6 @@ render() {
                             className="form-control"
                             onClick={this.updateExistingTask}
                             id="completed"/>
-                    {/* <button
-                        type="button"
-                        className="btn btn-success"
-                        onClick={() => {
-                            this.props.history.push(`/tasks/${this.props.task.id}/edit`);
-                        }}
-                        >
-                        Edit
-                        </button> */}
-
                 </div>
             </div>
         </div>
