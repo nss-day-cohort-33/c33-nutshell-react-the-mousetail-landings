@@ -20,6 +20,11 @@
       "username": "mjb",
       "password": "mjb",
       "id": 4
+    },
+    {
+      "username": "jcady17",
+      "password": "melisadumbdumb",
+      "id": 5
     }
   ],
   "messages": [
@@ -80,28 +85,12 @@
   ],
   "events": [
     {
-      "id": 4,
-      "title": "Purple",
-      "location": "This is the edit button",
-      "date": "2222-02-22",
-      "time": "4:00pm",
-      "userId": 4
-    },
-    {
-      "title": "Nap Time",
-      "location": "My Hammock",
-      "date": "3434-12-22",
-      "time": "4:00pm",
-      "userId": 4,
-      "id": 5
-    },
-    {
-      "title": "Game Time",
-      "location": "My House",
-      "date": "1717-02-06",
-      "time": "7pm",
-      "userId": 4,
-      "id": 6
+      "title": "Climb East",
+      "location": "East Nash",
+      "date": "2019-07-27",
+      "time": "3:30pm",
+      "userId": null,
+      "id": 8
     }
   ],
   "friends": [
@@ -183,11 +172,18 @@
       "id": 14
     },
     {
-      "name": "Get Help NOW!",
-      "completionDate": "9090-02-05",
+      "name": "Merge the Thing... !!!",
+      "completionDate": "2019-07-26",
       "completed": false,
       "userId": 4,
-      "id": 15
+      "id": 16
+    },
+    {
+      "name": "Go to the Meeting",
+      "completionDate": "2019-07-26",
+      "completed": false,
+      "userId": 5,
+      "id": 17
     }
   ]
 }

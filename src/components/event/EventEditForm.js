@@ -63,7 +63,7 @@ render() {
           <label htmlFor="time-of-event">Time</label>
           <input type="text" id="time" required value={this.state.time} onChange={this.handleFieldChange}/>
       </div>
-      <button onClick={this.editForm}>Save Changes</button>
+      <button>Save Changes</button>
   </form>
 </React.Fragment>
 )
