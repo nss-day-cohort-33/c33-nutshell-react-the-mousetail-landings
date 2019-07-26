@@ -25,6 +25,11 @@
       "username": "jcady17",
       "password": "melisadumbdumb",
       "id": 5
+    },
+    {
+      "username": "mjb",
+      "password": "mjb",
+      "id": 6
     }
   ],
   "messages": [
@@ -91,6 +96,14 @@
       "time": "3:30pm",
       "userId": null,
       "id": 8
+    },
+    {
+      "title": "Help Mom",
+      "location": "home",
+      "date": "2019-08-17",
+      "time": "3:45pm",
+      "userId": 6,
+      "id": 9
     }
   ],
   "friends": [
@@ -184,6 +197,13 @@
       "completed": false,
       "userId": 5,
       "id": 17
+    },
+    {
+      "name": "merge the thing",
+      "completionDate": "2019-07-25",
+      "completed": false,
+      "userId": 6,
+      "id": 18
     }
   ]
 }
