@@ -9,7 +9,7 @@ class Nutshell extends Component {
 isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
   render() {
-    // if(this.isAuthenticated()){
+
     return (
       <React.Fragment>
         <NavBar />
@@ -17,9 +17,6 @@ isAuthenticated = () => sessionStorage.getItem("userId") !== null
       </React.Fragment>
     );
   }
-  // else {
-  //   return <Redirect to="/welcome" />
-  //   }
 
 }
 

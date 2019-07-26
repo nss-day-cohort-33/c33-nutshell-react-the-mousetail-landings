@@ -5,8 +5,8 @@ export default {
           return APImanager.get(resource, id)
     },
 
-    getAll(resource) {
-          return APImanager.all(resource)
+    getAll(resource, userId) {
+          return APImanager.all(resource, userId)
     },
 
     post(resource, resourceObj) {
@@ -23,8 +23,8 @@ export default {
     },
 
     getTaskByUserID(userId) {
-      return fetch(`http://localhost:5002/tasks?userId=${userId}&complete=false`)
-      .then ( taskData => taskData.json(),
+      return fetch(`http://localhost:5002/tasks?userId=${userId}&completed=false`)
+      .then ( taskData => taskData.json()
       )
   }
 

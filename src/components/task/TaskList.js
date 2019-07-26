@@ -1,27 +1,20 @@
 import React, { Component } from "react"
 import "./Task.css"
-import TaskManager from "../modules/TaskManager";
+import TaskCard from "./TaskCard"
 
-let userId = sessionStorage.getItem("userId")
+let currentUserId = parseInt(sessionStorage.getItem("userId"))
+
 export default class TaskList extends Component {
-    state={
+    state= {
         tasks: []
     }
 
-    componentDidMount() {
-        TaskManager.getTaskByUserID(userId).then(tasks => {this.setState({ tasks })})
-        }
 
-    // completeTask() {
-    //     TaskManager.getTaskByUserID(userId)
-    //     .then(task => {
-    //         task.complete = true
-    //     })
-    //     TaskManager.put(resource, resourceObjId)
-    //     .then( () => {TaskManager.getTaskByUserID(userId)
-    //         .then(tasks => {this.setState({tasks})})
-    //     }
-    // }
+    componentDidMount() {
+          this.props.getUserTasks()
+         }
+
+
 
     render () {
         return (
@@ -36,25 +29,8 @@ export default class TaskList extends Component {
 
                 <section className="tasks">
             {
-                this.state.tasks.map(task =>
-                    <div key={task.id} className="card">
-                        <div className="card-body">
-                            <div className="card-title">
-                                {/* <img src={dog} className="icon--dog" /> */}
-                                <h5>Task: {task.name}</h5>
-                                <h5>Complete By: {task.completionDate}</h5>
-                                <label htmlFor="completed">Check to Complete</label>
-                                <input type="checkbox"
-                                        required
-                                        className="form-control"
-                                        onChange={this.handleFieldChange}
-                                        id="completed"/>
-                                {/* <button
-                                    onClick={() => this.props.deleteAnimal(animal.id)}
-                                    className="card-link">Delete</button> */}
-                            </div>
-                        </div>
-                    </div>
+                this.props.tasks.map(task =>
+                    <TaskCard key={task.id} task={task} {...this.props} />
                 )
             }
             </section>

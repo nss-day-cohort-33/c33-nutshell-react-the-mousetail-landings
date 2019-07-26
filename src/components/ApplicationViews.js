@@ -8,6 +8,7 @@ import TaskManager from "./modules/TaskManager"
 import LoginManager from "./modules/LoginManager"
 import TaskList from "./task/TaskList"
 import TaskForm from "./task/TaskForm"
+import TaskEditForm from "./task/TaskEditForm"
 import HomeList from "./home/HomeList"
 import ArticleList from "./article/ArticleList"
 import EventForm from "./event/EventForm"
@@ -17,6 +18,8 @@ import MessageDetail from "./message/MessageDetail"
 import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
 import Register from "./authentication/Register"
+
+let currentUserId = parseInt(sessionStorage.getItem("userId"))
 
 class ApplicationViews extends Component {
   state = {
@@ -28,25 +31,9 @@ class ApplicationViews extends Component {
     tasks: []
   };
 
-  // getUserTasks = () => {
-  //   TaskManager.getAll(sessionStorage.getItem("userId"))
-  //     .then(user_tasks => this.setState({tasks: user_tasks}))
-  // }
-  componentDidMount() {
-    const newState = {};
-
-    ArticleManager.getAll("articles")
-    .then(articles => (newState.articles = articles))
-    .then(() =>  MessageManager.getAll("messages") )
-    .then(messages => (newState.messages = messages))
-    // .then(() => TaskManager.getAll("tasks") )
-    // .then(tasks => (newState.tasks = tasks))
-
-    // .then(() => EventManager.getAll("events") )
-    // .then(events => (newState.events = events));
-    .then(() => this.setState(newState))
-
-
+  getUserTasks = () => {
+    return TaskManager.getTaskByUserID(currentUserId)
+      .then(user_tasks => this.setState({tasks: user_tasks}))
 
   }
 
@@ -94,13 +81,10 @@ class ApplicationViews extends Component {
       });
   };
 
-  // completeTask = (completedTaskObject) => {
-  //   return TaskManager.put("tasks", completedTaskObject)
-  //   .then(() => TaskManager.getTaskByUserID(userId))
-  //   .then(tasks => { this.setState({ tasks })
-  //   });
-  // };
-
+  updateTask = (editedTaskObject) => {
+    return TaskManager.put("tasks", editedTaskObject)
+    .then(() => this.getUserTasks())
+    };
 
 getUser = (userName) => {
   return LoginManager.get("user", userName)
@@ -110,13 +94,19 @@ getUser = (userName) => {
     return (
       <React.Fragment>
         <Route exact path="/" component={Welcome}/>
+
         <Route exact path="/home" render={props => {
           console.log(this.state.messages)
           console.log(this.state.tasks)
+          if (this.isAuthenticated()) {
             return ( <HomeList  {...props} tasks={this.state.tasks} articles={this.state.articles} messages={this.state.messages}
               events={this.state.events} />)
+            } else {
+              return <Redirect to="/" />
+             }
 
           }}/>
+
         <Route
           exact path="/register" render={props => {
             return ( <Register {...props} users={this.state.users} addNewUser={this.addNewUser}/>);
@@ -194,8 +184,9 @@ getUser = (userName) => {
                 <TaskList
                   {...props}
                   tasks={this.state.tasks}
-                  // getUserTasks={this.getUserTasks}
+                  getUserTasks={this.getUserTasks}
                   deleteTask={this.deleteTask}
+                  updateTask={this.updateTask}
                 />
               )
             } else {
@@ -203,9 +194,15 @@ getUser = (userName) => {
                }
           }} />
 
-        <Route path="/tasks/new" render={(props) => {
+        <Route exact path="/tasks/new" render={(props) => {
             return <TaskForm {...props} addTask={this.addTask}/>
         }} />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} tasks={this.state.tasks} updateTask={this.updateTask}/>
+          }}
+        />
 
 
       </React.Fragment>
