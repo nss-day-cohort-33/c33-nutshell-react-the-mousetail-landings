@@ -70,12 +70,6 @@
     }
   ],
   "articles": [
-      "message": "HELLO, I am a compy named comp",
-      "userId": null,
-      "id": 6
-    }
-  ],
-  "articles": [
     {
       "title": "Wormholes Allow Information to Escape Black Holes in time",
       "url": "Url about urls that talk about urls",
@@ -138,15 +132,6 @@
       "synopsis": "one of nothing",
       "userId": 4,
       "id": 9
-    }
-  ],
-  "events": [
-    {
-      "id": 1,
-      "userId": 2,
-      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-      "title": "Wormholes Allow Information to Escape Black Holes",
-      "synopsis": "Check out this recent discovery about workholes"
     }
   ],
   "events": [
